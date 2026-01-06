@@ -12,16 +12,28 @@ import sys
 import os
 
 # Add parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from .llm import LLMClient
+try:
+    from llm import LLMClient
+except ImportError:
+    from .llm import LLMClient  # type: ignore
 
 class SemanticValidator:
     """Uses LLM to validate semantic compliance with CANON constraints."""
 
     def __init__(self, root: Path):
-        self.root = root
-        self.llm = LLMClient()
+        self.root: Path = root
+        self.llm: LLMClient | None = None
+        self.llm_available: bool = False
+
+        try:
+            self.llm = LLMClient()
+            self.llm_available = True
+        except Exception:
+            # LLM not available - semantic validation limited
+            self.llm_available = False
+
         self.violations: List[Dict[str, Any]] = []
 
     def read_file_content(self, file_path: Path) -> str:
@@ -37,53 +49,68 @@ class SemanticValidator:
         spec_files = list(self.root.glob("*CANONIC*.md"))
 
         for spec_file in spec_files:
-            self.read_file_content(spec_file)
+            content = self.read_file_content(spec_file)
 
-            prompt = f"""
-            Analyze this CANONIC specification file for naming compliance.
+            # Basic validation: check if file follows CANONIC naming
+            if self.llm_available:
+                prompt = f"""
+                Analyze this CANONIC specification file for naming compliance.
 
-            File: {spec_file.name}
-            Repository name: "canonic"
-            CANON invariant: "Repository specification files must be named <REPO>.md."
+                File: {spec_file.name}
+                Repository name: "canonic"
+                CANON invariant: "Repository specification files must be named <REPO>.md."
 
-            Question: Does "{spec_file.name}" violate the specification naming invariant?
+                Question: Does "{spec_file.name}" violate the specification naming invariant?
 
-            Return ONLY valid JSON:
-            {{
-                "violates_invariant": true,
-                "correct_name": "canonic.md",
-                "reasoning": "brief explanation of why it violates or doesn't"
-            }}
-            """
+                Return ONLY valid JSON:
+                {{
+                    "violates_invariant": true,
+                    "correct_name": "CANONIC.md",
+                    "reasoning": "brief explanation of why it violates or doesn't"
+                }}
+                """
 
-            try:
-                response = self.llm.chat_completion([{"role": "user", "content": prompt}])
-                # Handle LLMResponse object
-                if hasattr(response, 'content'):
-                    response_text = response.content
-                else:
-                    response_text = str(response)
-                result = json.loads(response_text.strip())
+                try:
+                    if self.llm is None:
+                        raise Exception("LLM client not available")
 
-                if result.get("violates_invariant"):
+                    response = self.llm.chat_completion([{"role": "user", "content": prompt}])
+                    # Handle LLMResponse object
+                    if hasattr(response, 'content') and response.content:
+                        response_text = response.content
+                    else:
+                        response_text = str(response)
+
+                    result = json.loads(response_text.strip())
+
+                    if result.get("violates_invariant"):
+                        self.violations.append({
+                            "artifact": str(spec_file.relative_to(self.root)),
+                            "requirement": "Specification file naming",
+                            "details": f"File should be named {result['correct_name']}. {result['reasoning']}",
+                            "severity": "high"
+                        })
+                except Exception as e:
                     self.violations.append({
                         "artifact": str(spec_file.relative_to(self.root)),
                         "requirement": "Specification file naming",
-                        "details": f"File should be named {result['correct_name']}. {result['reasoning']}",
-                        "severity": "high"
+                        "details": f"LLM validation failed: {e}",
+                        "severity": "medium"
                     })
-            except Exception as e:
-                self.violations.append({
-                    "artifact": str(spec_file.relative_to(self.root)),
-                    "requirement": "Specification file naming",
-                    "details": f"LLM validation failed: {e}",
-                    "severity": "medium"
-                })
+            else:
+                # Fallback validation without LLM
+                if spec_file.name != "CANONIC.md":
+                    self.violations.append({
+                        "artifact": str(spec_file.relative_to(self.root)),
+                        "requirement": "Specification file naming",
+                        "details": f"Specification file should be named CANONIC.md (LLM validation unavailable)",
+                        "severity": "medium"
+                    })
 
     def validate_governance_purity(self) -> None:
         """Validate governance purity - no extra files."""
         allowed_files = {
-            "CANON.md", "VOCABULARY.md", "README.md",
+            "CANON.md", "VOCABULARY.md", "README.md", "CANONIC.md",  # Repository specification file
             ".gitignore", ".git"  # Git files are acceptable
         }
         allowed_dirs = {"examples"}
@@ -94,7 +121,7 @@ class SemanticValidator:
                     self.violations.append({
                         "artifact": item.name,
                         "requirement": "Governance purity",
-                        "details": f"File '{item.name}' violates governance purity - only CANON.md, VOCABULARY.md, README.md, and examples allowed",
+                        "details": f"File '{item.name}' violates governance purity - only repository specification file, CANON.md, VOCABULARY.md, README.md, and examples allowed",
                         "severity": "high"
                     })
             elif item.is_dir() and item.name not in allowed_dirs:
