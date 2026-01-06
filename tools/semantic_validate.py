@@ -15,7 +15,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 try:
-    from llm import LLMClient
+    from llm import LLMClient  # type: ignore
 except ImportError:
     from .llm import LLMClient  # type: ignore
 
@@ -74,10 +74,10 @@ class SemanticValidator:
                     if self.llm is None:
                         raise Exception("LLM client not available")
 
-                    response = self.llm.chat_completion([{"role": "user", "content": prompt}])
+                    response = self.llm.chat_completion([{"role": "user", "content": prompt}])  # type: ignore
                     # Handle LLMResponse object
-                    if hasattr(response, 'content') and response.content:
-                        response_text = response.content
+                    if hasattr(response, 'content') and response.content:  # type: ignore
+                        response_text = response.content  # type: ignore
                     else:
                         response_text = str(response)
 
