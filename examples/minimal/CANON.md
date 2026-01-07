@@ -2,7 +2,7 @@
 
 **Governance for the minimal FSM example.**
 
-**Inherits from:** [../../CANON.md](../../CANON.md), [../CANON.md](../CANON.md)
+**Inherits from:** [../../00-CANON.md](../../00-CANON.md), [../00-CANON.md](../00-CANON.md)
 
 This is the simplest complete implementation of the 4-state FSM.
 

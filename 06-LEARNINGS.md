@@ -443,7 +443,7 @@ for py_file in self.root.rglob('*.py'):
         self.violations.append("executable code in pure governance")
 ```
 
-**CANON.md Definition ([CANON.md:42-49](CANON.md#L42-L49)):**
+**CANON.md Definition ([00-CANON.md:42-49](CANON.md#L42-L49)):**
 > Pure governance repositories contain only: repository specification file, CANON.md, VOCABULARY.md, README.md, and examples.
 
 This is an **allowlist constraint**, not a blocklist constraint.
