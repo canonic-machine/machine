@@ -6,105 +6,92 @@ Inherits core CANONIC terms from canonic-machine/canonic.
 
 ---
 
-## Core Terms
+## Validation Concepts
 
 ### backflow
 Returning to an earlier state when validation fails. Only allowed on failure.
 
-### FSM
-Finite State Machine. A system with discrete states and defined transitions between them. The MACHINE is a specific 4-state FSM.
+### canon-awareness
+The property that validators derive rules from CANON.md dynamically rather than hardcoding constraints.
 
-### MACHINE
-The CANONIC FSM engine. A domain-agnostic 4-state finite state machine (Episodes → Assets → Prose → Output) that transforms raw input into validated output through governed transitions.
+### compliance
+State of passing all validation checks.
 
-### state
-A discrete stage in the FSM with specific constraints and artifacts. The 4-state FSM has: episodes, assets, prose, output.
+### constraint checking
+The process of verifying that artifacts satisfy requirements defined in CANON.md.
 
-### transition
-Movement from one state to another, governed by validation gates.
+### reference integrity
+Verifying that all references resolve correctly across the artifact tree.
+
+### semantic validation
+LLM-powered deep validation checking coherence, completeness, and canon alignment.
+
+### syntactic validation
+Fast, deterministic validation checking structure, format, and naming conventions.
 
 ### validation gate
 A pass/fail check that determines if transition to next state is allowed.
 
----
-
-## State Definitions
-
-### asset
-Registered entity with stable identity. Extracted from episodes, tracked in ledger, referenced by prose.
-
-### episode
-Raw domain input. Ungoverned content that supplies meaning to the system. Source material for extraction.
-
-### output
-Final validated artifact. Only exists when all validation passes. Immutable until next cycle.
-
-### prose
-Composed content that references registered assets. The narrative or structured layer built on assets.
-
----
-
-## Process Concepts
-
-### composition
-The process of creating prose that references registered assets.
-
-### extraction
-The process of identifying entities in episodes and registering them as assets.
-
-### ledger
-Single source of truth for all registered assets. Typically LEDGER.md in assets/.
-
-### reference resolution
-Verifying that all asset references in prose point to registered assets in the ledger.
-
-### registration
-Adding an entity to the asset ledger with unique ID and source traceability.
-
-### source traceability
-The property that every asset can be traced back to the episode it came from.
-
----
-
-## Lifecycle Concepts
-
-### compliant
-State of passing all validation checks. Output can only exist when system is compliant.
-
-### immutability
-The property that an artifact cannot be changed once set. Episodes become immutable after extraction. Assets IDs are always immutable.
-
-### REINDEX
-A protocol for controlled exception to immutability. Creates REINDEX.md, suspends immutability, allows coordinated changes, then deletes REINDEX.md to restore enforcement.
-
 ### violation
-A failed validation check. Blocks transition to next state.
+A failed validation check that blocks transition to next state.
 
 ---
 
-## Domain Concepts
+## FSM Infrastructure
+
+### FSM
+Finite State Machine. A system with discrete states and defined transitions between them. Domain applications define their own FSMs.
+
+### state
+A discrete stage in an FSM with specific constraints and artifacts. State names are domain-specific.
+
+### state transition
+Movement from one state to another, governed by validation gates.
+
+---
+
+## Git-FSM Concepts
+
+### atomic commit
+A git commit containing one logical change addressing one constraint.
+
+### consumer commit
+A commit that applies canonical constraints or fixes violations. Uses "Apply" or "Fix" prefix.
+
+### git-FSM
+The implementation pattern where git commits are FSM state transitions with validation acting as gates.
+
+### producer commit
+A commit that canonifies new patterns or constraints. Uses "Canonify" prefix.
+
+### producer ratio
+The percentage of commits that are producer (canonification) vs consumer (application). Indicates system maturity phase.
+
+---
+
+## Self-Properties
+
+### self-healing
+The property that the system detects violations through git history patterns and triggers recovery.
+
+### self-measuring
+The property that the system measures its own maturity through git commit analysis.
+
+### self-strengthening
+The property that the system improves through git-based introspection cycles and recursive canonification.
+
+---
+
+## Repository Concepts
 
 ### domain application
-A MACHINE implementation specialized for a specific domain. Named by domain only (WRITING, DOCUMENTATION, RESEARCH). Inherits all MACHINE constraints and adds domain-specific specializations.
+A repository that inherits from MACHINE and implements a domain-specific FSM. Examples: WRITING, DOCUMENTATION, RESEARCH.
 
-### domain-agnostic
-The property that the FSM works across different use cases: writing, documentation, research, knowledge management.
+### governance repository
+A repository that defines canonical constraints without implementation. Must include examples directory. Only CANONIC is governance.
 
-### domain-sourced
-Content that comes from the specific domain being modeled (lived experiences for writing, requirements for documentation, observations for research).
-
----
-
-## Nomenclature
-
-### Naming Convention
-- **Paradigm**: CANONIC (all caps, the root)
-- **Engine**: MACHINE (all caps, the FSM)
-- **Applications**: Domain name only (WRITING, DOCUMENTATION, RESEARCH)
-
-**Principle:** Inheritance is explicit in CANON statements, not repeated in terminology.
-
-**Violation:** Naming an application "DOMAIN MACHINE" when it already inherits from MACHINE.
+### validation engine
+The layer that implements constraint checking, reference integrity, and FSM infrastructure without domain-specific patterns.
 
 ---
 

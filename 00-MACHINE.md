@@ -1,555 +1,409 @@
 # MACHINE
 
-**The 4-state CANONIC FSM for domain-agnostic content governance.**
+**The CANONIC validation engine for domain-agnostic constraint checking.**
 
-This document defines the finite state machine that transforms raw domain input into validated output through governed extraction and composition.
+This document defines the validation engine layer that domain applications inherit to implement governed finite state machines.
 
 ---
 
 ## The Problem
 
-Content systems fail when they mix concerns:
+Content systems fail when validation is manual or absent:
 
-- Input and structuring happen simultaneously
-- Composition and validation blur together
-- Revision destroys traceability
-- Rewriting risks losing meaning
-- Collaboration causes drift
+- Constraints exist only in documentation
+- Compliance checking is human-dependent
+- Violations discovered late or never
+- No systematic enforcement
+- Governance drifts from implementation
 
-LLMs make this worse, not better:
-- They generate fluent content that references nonexistent sources
-- They invent structure that contradicts prior decisions
+LLMs make this worse without enforcement:
+- They generate fluent content that violates constraints
+- They cannot self-police against governance rules
 - They drift between iterations
-- They cannot trace claims back to source material
+- They need external validation gates
 
-Traditional content systems have no compiler. The CANONIC FSM fixes this.
+Content systems need a validation engine. MACHINE provides this.
 
 ---
 
 ## The Solution
 
-The CANONIC FSM is a **4-state machine** with three transitions and one validation gate.
+MACHINE is a **validation engine** that provides domain-agnostic constraint checking for CANONIC applications.
 
-```mermaid
-stateDiagram-v2
-  direction LR
+**Core capabilities:**
+- Syntactic validation (structure, format, naming)
+- Semantic validation (coherence, completeness via LLM)
+- Reference integrity checking
+- Triad compliance verification
+- Git-FSM transition tracking
+- Canon-awareness (derives rules from CANON.md)
 
-  [*] --> Episode
-  Episode --> Asset: extract
-  Asset --> Prose: compose
-  Prose --> Output: validate
-  Output --> Prose: fix prose
-  Output --> Asset: fix structure
-  Output --> [*]
+**What MACHINE provides:**
+
+```
+Domain Application (e.g., WRITING)
+         ↓
+    Inherits from
+         ↓
+      MACHINE
+    (validation engine)
+         ↓
+    Inherits from
+         ↓
+      CANONIC
+    (root paradigm)
 ```
 
-**The separation:**
-- **Episodes** hold meaning (raw, ungoverned)
-- **Assets** hold structure (extracted, registered)
-- **Prose** holds composition (governed, traceable)
-- **Output** holds validity (compliant, immutable)
-
-Each state has CANON. Each transition has validation.
-
-This is the entire machine.
+MACHINE enables domain applications to define their own FSMs while reusing validation infrastructure.
 
 ---
 
-## State 1: Episode
+## Architecture Position
 
-An **episode** is raw domain input.
+MACHINE occupies the **validation engine layer** in the three-layer architecture:
 
-**Domain examples:**
-- **Writing:** Lived experiences, observations, memories
-- **Documentation:** Requirements, specifications, stakeholder notes
-- **Research:** Field observations, raw data, experimental notes
-- **Knowledge:** Highlights, learnings, bookmarks, quotes
+1. **CANONIC** (paradigm layer) - Defines constraints, validation, inheritance, triad
+2. **MACHINE** (validation engine layer) - Implements constraint checking, git-FSM, self-* properties
+3. **Domain applications** (application layer) - Inherit from MACHINE, add domain-specific FSMs
 
-**Episodes are ungoverned.**
+**MACHINE is domain-agnostic.**
 
-They are allowed to be:
-- Messy
-- Contradictory
-- Incomplete
-- Stream-of-consciousness
+It does not define:
+- Specific state names (Episode, Asset, Prose, Output are domain-specific)
+- Asset types (Person, Place, Claim are domain-specific)
+- Content structure (narrative, documentation, research formats are domain-specific)
 
-This is where meaning enters the system.
-
-**Why episodes matter:**
-
-Traditional systems start with structure. The FSM starts with source material.
-
-You do not begin by outlining or organizing. You begin by recording what happened, what you observed, what you learned.
-
-Episodes are the source material. Everything downstream traces back to episodes.
-
-**Episode CANON:**
-
-```
-episodes/CANON.md
-
-Required:
-  - Filename: sequential numbering (001-, 002-, etc.)
-  - Domain-sourced (human observations, not LLM-generated)
-
-Allowed:
-  - Any format: prose, bullets, fragments, lists
-  - Contradictions and uncertainty
-  - Incomplete thoughts
-
-Forbidden:
-  - Asset IDs or structured references
-  - Citations to other episodes
-  - Compliance requirements
-
-Invariant:
-  - Episodes are immutable after extraction
-```
-
-Episodes flow downstream only. They are never edited once assets are extracted.
+It does define:
+- How to validate any FSM
+- How to check constraint compliance
+- How to track state transitions via git
+- How to measure system maturity
+- How to enable self-healing and self-strengthening
 
 ---
 
-## State 2: Asset
+## Core Validation Framework
 
-An **asset** is a governed unit of meaning.
+### Syntactic Validation
 
-Assets are extracted from episodes and registered in a ledger.
+**Fast, deterministic checks:**
+- File existence and naming conventions
+- Directory structure compliance
+- Triad presence (CANON.md, DICTIONARY.md, README.md)
+- Alphabetical ordering in DICTIONARY.md
+- Reference format validity
+- Sequential numbering correctness
 
-**Domain-specific asset types:**
+**Implementation:**
+- Free (no LLM tokens required)
+- Runs pre-commit
+- Binary pass/fail
+- Clear violation messages
 
-| Domain | Asset Examples |
-|--------|---------------|
-| Writing | Person, Place, Object, Claim, Concept, Event |
-| Documentation | API Endpoint, Component, Module, Data Model, Config |
-| Research | Variable, Measurement, Subject, Method, Hypothesis |
-| Knowledge | Concept, Definition, Source, Author, Topic |
+### Semantic Validation
 
-An asset is **not content**. It is structure extracted from content.
+**LLM-powered deep checks:**
+- Term definition consistency
+- Constraint completeness
+- Reference resolution
+- Coherence verification
+- Inheritance chain validity
+- Canon alignment
 
-**Asset structure:**
+**Implementation:**
+- Token-cost aware
+- Runs on-demand or pre-commit
+- Provides diagnostic feedback
+- Suggests fixes where possible
 
-Every asset must have:
-- **ID**: Unique, immutable identifier
-- **Name**: Human-readable label
-- **Type**: One of the defined asset types (domain-specific)
-- **Source**: Which episode it came from
-- **Notes**: Optional context
+### Reference Integrity
 
-**Why assets matter:**
-
-Assets prevent drift. Once something is named and registered, it has a stable identity.
-
-**Example (Writing domain):**
-If you write about "the coffee shop on Main Street" in Episode 003, and later refer to "the cafe downtown" in Prose, the system catches the inconsistency.
-
-**Example (Documentation domain):**
-If you document "/api/users" as an endpoint, you cannot later reference "/users" without registration—the system flags unregistered references.
-
-Assets force clarity before composition.
-
-**Asset CANON:**
-
-```
-assets/CANON.md
-
-Required artifacts:
-  - LEDGER.md (single source of truth)
-
-Asset structure:
-  - id: string (immutable once assigned)
-  - name: string (human-readable)
-  - type: domain-specific classification
-  - source_episode: integer (which episode)
-  - notes: string (optional context)
-
-Registration protocol:
-  1. Extract entities from episodes
-  2. Check for duplicates (merge if found)
-  3. Assign ID (format: asset-NNNN or domain-specific)
-  4. Record source episode
-  5. Update LEDGER.md
-
-Invariants:
-  - Asset IDs are immutable
-  - One asset per unique entity
-  - Source episode must be tracked
-  - Cannot delete assets referenced in prose
-
-Forbidden:
-  - Inventing assets without episode source
-  - Changing asset IDs after registration
-  - Duplicate registrations
-```
-
-Assets are the structural foundation. Prose builds on top of them.
+**Cross-artifact validation:**
+- Verify all references resolve
+- Check inheritance chains
+- Validate term usage
+- Track source traceability
+- Detect orphaned artifacts
 
 ---
 
-## State 3: Prose
+## Git-FSM Implementation
 
-**Prose** is the composed content layer.
+### Commits as State Transitions
 
-**Domain examples:**
-- **Writing:** Narrative text, stories, articles
-- **Documentation:** API docs, user guides, explanations
-- **Research:** Analysis, results, discussion sections
-- **Knowledge:** Summaries, wikis, knowledge base entries
+**Git commits ARE FSM state transitions.**
 
-**Prose may only reference registered assets.**
+Every commit proposes a state transition:
+- Pre-commit validation acts as gate (accept/reject)
+- Rejected commits trigger backflow to source state
+- Git history records complete FSM transition log
+- Commits must be atomic: one logical change
 
-Prose may not invent meaning outside the system.
+**Commit structure requirements:**
+- Atomic (single logical change, one constraint addressed)
+- Validated (passes pre-commit gates)
+- Traceable (clear producer vs consumer action)
 
-**Why this constraint matters:**
+**Commit message patterns:**
 
-If prose can reference anything, drift is inevitable. Claims appear without sources. Names change between paragraphs. Structure dissolves.
+Producer commits (discovery):
+- `Canonify [what was learned]`
 
-By requiring prose to reference only registered assets, the system enforces traceability:
-- Every claim traces to an asset
-- Every asset traces to an episode
-- Episodes are immutable source material
+Consumer commits (application):
+- `Apply [constraint/pattern/protocol]`
+- `Fix [violation]`
 
-Revision becomes safe. You can rewrite prose without losing the underlying structure.
+**Prohibited patterns:**
+- Ambiguous verbs: "Add", "Update", "Implement", "Complete", "Enforce", "Standardize"
+- These don't indicate whether work is canonical discovery or constraint application
 
-**Prose CANON:**
+---
+
+## Canon-Awareness
+
+**Validators must derive rules from CANON.md, not hardcode constraints.**
+
+Traditional validators fail when governance evolves:
+- Hardcoded file names become outdated
+- Structural assumptions break
+- Manual updates required
+
+**Canon-aware validation:**
+1. Read canonical triad definition from CANON.md
+2. Extract current constraints from inheritance chain
+3. Validate against current canonical requirements
+4. Update automatically when CANON changes
+5. Never hardcode file names or structural requirements
+
+**Example:**
 
 ```
-prose/CANON.md
+# Hardcoded (wrong)
+check_file_exists("VOCABULARY.md")
 
-Required:
-  - All entity references must use registered asset names/IDs
-  - At least one asset must be referenced
-
-Allowed:
-  - Multiple drafts in parallel
-  - Voice and style variation
-  - Narrative or structural decisions
-
-Forbidden:
-  - References to unregistered entities
-  - Inventing claims not in episodes
-  - Breaking asset naming conventions
-
-Validation:
-  - Extract all entity references from prose
-  - Check each against assets/LEDGER.md
-  - Flag unregistered references
-  - Block advancement if violations found
+# Canon-aware (correct)
+triad_files = parse_canon_triad_requirement()
+for file in triad_files:
+    check_file_exists(file)
 ```
 
-Prose is replaceable. Assets are not.
-
-This is the key insight that makes rewriting tractable.
+This enables governance evolution without validator code changes.
 
 ---
 
-## State 4: Output
+## Self-Properties
 
-**Output** is the final, validated artifact.
+MACHINE implements three self-properties via git introspection:
 
-Output only exists if prose passes validation.
+### Self-Healing
 
-**Domain examples:**
-- **Writing:** Published articles, books, documentation
-- **Documentation:** Published API docs, user guides
-- **Research:** Submitted papers, reproducible analyses
-- **Knowledge:** Published wiki pages, knowledge base entries
+**System detects violations through git history patterns.**
 
-**Output CANON:**
+Git violation signals:
+- Commit → Revert → Reapply indicates failed validation
+- Rapid commit cycles on CANON files indicate drift
+- Fix/violation keywords in messages indicate constraint failures
 
-```
-output/CANON.md
+**Response:**
+- Trigger comprehensive validation
+- Require human approval before transition
+- Log healing events for analysis
 
-Validation requirements:
-  - All prose references must resolve to registered assets
-  - All required sections must be present (if applicable)
-  - No forbidden content (depends on domain)
+### Self-Measuring
 
-Output structure:
-  - Immutable once published
-  - Versioned if updated
-  - Includes metadata: validation timestamp, asset ledger snapshot
+**System measures maturity through git commit analysis.**
 
-Allowed to exist only if:
-  - Prose → Output validation passes
-  - No outstanding violations
+Maturity metrics:
+- **Producer commits**: Canonifications (discovering patterns)
+- **Consumer commits**: Applications and fixes (enforcing patterns)
+- **Producer ratio**: Producer / (Producer + Consumer) percentage
 
-Backflow rules:
-  - If validation fails at prose level → return to prose/
-  - If validation fails at structure level → return to assets/
-```
+Maturity thresholds:
+- New system: >40% producer commits (rapid learning)
+- Maturing: 10-30% producer commits (refinement)
+- Mature: <10% producer commits (stable enforcement)
 
-Output is not a draft. Output is what survived validation.
+Repository maturity signals:
+- Governance repositories (canonic/) must be stable (low commit frequency)
+- Implementation repositories (machine/) may be active during building
+- High base canon churn indicates paradigm immaturity
+- Base canon should be static after paradigm stabilizes
 
----
+### Self-Strengthening
 
-## Coordination: The REINDEX Protocol
+**System improves through git-based introspection cycles.**
 
-**Problem:** Changes in one state can invalidate downstream states.
+Pattern discovery:
+- Git history analysis identifies meta-patterns
+- Session boundaries reveal canonification clusters
+- Backflow patterns indicate self-healing events
+- Terminology drift triggers convergence
+- Meta-patterns themselves are canonified
 
-- Structure changes → prose invalid
-- Asset schema changes → references break
-- CANON changes → everything downstream must adapt
+Introspection depth levels:
+1. Fix violations in work artifacts
+2. Fix gaps in validation tools
+3. Fix architectural violations in validators
+4. Continue until root cause found and canonified
 
-**Solution:** REINDEX protocol coordinates multi-state changes.
+Recursive strengthening:
+- Each canonification makes future violations easier to catch
+- Meta-patterns about improvement are themselves canonified
+- System learns how to learn better
+- Self-measurement tracks progress
 
-**When REINDEX is required:**
-
-Apply `reindex_protocol` when changes will invalidate downstream:
-- Modifying structure (changing/deleting sections) when prose exists
-- Changing asset field requirements when prose references those fields
-- Deleting assets that are referenced in prose
-
-**When REINDEX is optional:**
-
-Use `reindex_protocol` to signal work-in-progress:
-- Major prose rewrites (signal: output should not exist yet)
-- Large-scale refactoring across multiple states
-- Coordinated changes where you want explicit tracking
-
-**REINDEX procedure:**
-
-1. Create `REINDEX.md` in the state being modified:
-   ```markdown
-   # REINDEX: [State Name]
-
-   Reason: [why change needed]
-   Changes: [what will change]
-   Impacts: [downstream effects]
-
-   Status:
-   - Change completed: ☐
-   - Downstream adapted: ☐
-   ```
-
-2. Make coordinated changes (validation allows while REINDEX.md exists)
-
-3. Delete `REINDEX.md` (triggers full validation)
-
-4. If valid → output exists
-
-**While REINDEX.md exists:**
-- Changes allowed in that state
-- Output blocked (cannot exist)
-- Validation reports: "REINDEX in progress at [state]/"
-
-**REINDEX prevents:**
-- Half-finished coordinated changes in output
-- Drift from uncoordinated multi-state edits
-- Unclear system state during refactoring
-
-REINDEX is the exception that proves the rule: normally states are immutable once downstream exists. REINDEX makes coordinated mutation explicit and tracked.
+**Pattern:** Work → Introspection → Learning → Canonification → Meta-Pattern Discovery → Recursive Strengthening
 
 ---
 
-## The Three Transitions
+## Validation Protocol
 
-### Transition 1: Episode → Asset
+### Pre-Commit Validation
 
-**Operation:** Extract structure from raw input.
+Required checks before any commit:
+1. Triad compliance (all three files present)
+2. Alphabetical ordering in DICTIONARY.md
+3. No orphaned section headers in CANON.md
+4. All terms used in CANON/README defined in DICTIONARY
+5. No redefinition of inherited terms
+6. Inheritance links valid
 
-This transition:
-- Identifies entities in episodes
-- Names them
-- Assigns IDs
-- Records sources
-- Prevents duplication
+### On-Demand Validation
 
-**Why this is the most important step:**
+Deep semantic checks:
+1. Reference resolution across artifact tree
+2. Constraint completeness analysis
+3. Coherence verification
+4. Source traceability audit
+5. Drift detection
 
-Most systems skip extraction. They go straight from notes to composition.
+### Continuous Validation
 
-This is why they drift.
-
-Without extraction, there is no structural foundation. Names change. References break. Meaning dissolves.
-
-The FSM forces extraction before composition.
-
-**CANON enforcement:**
-
-The transition succeeds only if:
-- All extracted assets have required fields (id, name, type, source)
-- No duplicate assets are created
-- Source episodes are tracked
-
----
-
-### Transition 2: Asset → Prose
-
-**Operation:** Compose content from governed material.
-
-This transition:
-- Allows composition only from registered assets
-- Forces clarity before eloquence
-- Makes rewriting safe
-
-**Why this works:**
-
-Because assets are stable, prose can change.
-
-You can:
-- Rewrite sentences without losing meaning
-- Try different narrative structures
-- Adjust voice and tone
-- Delete paragraphs
-
-As long as the underlying assets remain registered, the prose can be regenerated.
-
-**CANON enforcement:**
-
-The transition succeeds only if:
-- Prose references registered assets
-- No unregistered entities appear
-- Asset naming is consistent
-
----
-
-### Transition 3: Prose → Output
-
-**Operation:** Validation gate.
-
-This transition:
-- Does not judge quality
-- Does not judge style
-- Only judges validity
-
-**Compliance is not editing. It is permission.**
-
-**CANON enforcement:**
-
-The transition succeeds only if:
-- All asset references resolve
-- Required sections present (if applicable)
-- No forbidden violations
-
-If validation fails:
-- Prose violations → return to `prose/`
-- Structure violations → return to `assets/`
+Git-FSM monitoring:
+1. Track commit patterns (producer vs consumer ratio)
+2. Detect violation signals in history
+3. Measure maturity phase
+4. Identify canonification opportunities
+5. Trigger self-healing when needed
 
 ---
 
 ## Directory Structure
 
-The FSM is implemented as directories with CANON:
+MACHINE provides validation for directory structures with CANON:
 
 ```
-project/
-├── episodes/
-│   ├── CANON.md              # Episode rules
-│   ├── VOCABULARY.md
+domain-application/
+├── CANON.md              # Inherits from machine
+├── DICTIONARY.md         # Domain-specific terms
+├── README.md             # Human guidance
+├── state-1/
+│   ├── CANON.md          # State-specific constraints
+│   ├── DICTIONARY.md
 │   ├── README.md
-│   ├── 001-*.md
-│   ├── 002-*.md
-│   └── ...
-├── assets/
-│   ├── CANON.md              # Asset rules
-│   ├── VOCABULARY.md
+│   └── [state artifacts]
+├── state-2/
+│   ├── CANON.md
+│   ├── DICTIONARY.md
 │   ├── README.md
-│   └── LEDGER.md             # Registry of all assets
-├── prose/
-│   ├── CANON.md              # Prose rules
-│   ├── VOCABULARY.md
-│   ├── README.md
-│   └── draft.md (or domain-specific files)
-└── output/
-    ├── CANON.md              # Output validation rules
-    ├── VOCABULARY.md
-    ├── README.md
-    ├── METADATA.md
-    └── [compliant artifacts only]
+│   └── [state artifacts]
+└── ...
 ```
 
-Each directory has the triad (CANON, VOCABULARY, README). Each CANON governs its state.
+Each directory has triad. MACHINE validates all.
 
 ---
 
-## What This Enables
+## What MACHINE Enables
 
-The FSM makes it possible to:
+Domain applications that inherit MACHINE get:
 
-**Scale without drift**
-- Multiple collaborators work from the same asset ledger
-- Style varies, structure doesn't
+**Automatic enforcement:**
+- Constraints checked, not just documented
+- Violations caught immediately
+- Compliance non-negotiable
 
-**Collaborate without confusion**
-- Assets are single source of truth
-- Content can diverge, but structure is shared
+**Systematic validation:**
+- Syntactic (fast, free)
+- Semantic (deep, LLM-powered)
+- Reference integrity
+- Canon-awareness
 
-**Regenerate reproducibly**
-- Same episodes + same assets → same structure
-- Content can be rewritten without losing meaning
+**Git-based FSM:**
+- Commits as state transitions
+- History as transition log
+- Backflow on failure
+- Atomic changes
 
-**Audit claims to source**
-- Every asset traces to an episode
-- Episodes are immutable source material
+**Self-properties:**
+- Self-healing (detect and recover from violations)
+- Self-measuring (track maturity objectively)
+- Self-strengthening (improve through introspection)
 
-**Block AI slop without banning AI**
-- LLMs can draft content
-- CANON blocks invalid output
-- Validation is non-negotiable
-
----
-
-## Why Traditional Systems Fail
-
-Traditional systems mix:
-- Input and structuring
-- Composition and validation
-- Revision and meaning-preservation
-
-The FSM separates them:
-- **Episodes** supply meaning
-- **Assets** supply structure
-- **Prose** supplies composition
-- **Validation** supplies discipline
-
-Humans do the thinking. CANON does the enforcement. AI accelerates transitions.
+**Governance evolution:**
+- CANONs change, validators adapt
+- No hardcoded assumptions
+- Inheritance enables composition
+- Mature base canon remains stable
 
 ---
 
-## Scaling Beyond the Base
+## Domain Application Integration
 
-This document defines the minimal FSM: four states, three transitions.
+Domain applications (WRITING, DOCUMENTATION, RESEARCH) inherit MACHINE by:
 
-Everything larger is a CANON layer, not a new machine.
+1. Declaring inheritance in root CANON.md:
+   ```markdown
+   **Inherits from:** [canonic-machine/machine](https://github.com/canonic-machine/machine)
+   ```
 
-**Domain-specific extensions:**
+2. Defining domain-specific FSM in specification document (e.g., WRITING.md)
 
-| Domain | Additional Constraints |
-|--------|----------------------|
-| Writing | Scene structure, narrative arcs, voice consistency |
-| Documentation | API versioning, code examples, schema validation |
-| Research | Statistical methods, citation requirements, figure validation |
-| Knowledge | Cross-references, taxonomy, source quality |
+3. Adding domain-specific constraints in local CANON.md
 
-The base FSM stays the same. Only CANON changes.
+4. Extending DICTIONARY.md with domain terms
+
+5. Using MACHINE validation infrastructure
+
+**Example inheritance chain:**
+
+```
+WRITING.md (4-state FSM: Episode → Asset → Prose → Output)
+    ↓ inherits validation from
+MACHINE (validation engine, git-FSM, self-properties)
+    ↓ inherits paradigm from
+CANONIC (constraints, triad, inheritance)
+```
 
 ---
 
 ## Non-Negotiables
 
-- Episodes are immutable after extraction
-- Assets must be registered before use in prose
-- Prose may only reference registered assets
-- Output exists only if validation passes
-- If validation fails, fix upstream—never polish downstream
+- Validators must be canon-aware (read CANON.md, don't hardcode)
+- Commits must be atomic (one logical change)
+- Commit messages must indicate producer vs consumer
+- Git history must be analyzable (enable self-measurement)
+- Validation happens pre-commit (prevent invalid states)
+- Backflow returns to source state (fix upstream, not downstream)
+- MACHINE stays domain-agnostic (no domain-specific patterns)
 
 ---
 
 ## What Comes Next
 
-To use this FSM:
+To use MACHINE:
 
-1. Write episodes (raw observations)
-2. Extract assets (identify entities, register in ledger)
-3. Write prose (compose content using assets)
-4. Validate (check compliance)
-5. If valid → output exists
-6. If invalid → return upstream and fix
+1. Create domain application repository
+2. Declare inheritance from MACHINE in CANON.md
+3. Define domain-specific FSM in specification document
+4. Add domain constraints to local CANON.md
+5. Use MACHINE validation infrastructure
+6. Commit triggers validation
+7. Valid commits succeed, invalid commits backflow
 
-The system does not make work easier.
+MACHINE does not define what to validate.
 
-It makes work durable.
+MACHINE defines how to validate anything.
 
 ---
 
