@@ -28,7 +28,7 @@ This file defines agent behavior for the *machine* implementation framework. Fol
 
 ### Trace to FSM Sources
 **Extends parent tracing with:**
-- Trace findings to FSM documents (`FSM_SPECIFICATION.md`, `PROTOCOLS.md`, `PATTERNS.md`)
+- Trace findings to FSM documents (`FSM_SPECIFICATION.md`, `PROTOCOLS.md`, `SOLUTIONS.md`)
 - Understand FSM transitions: Episode→Asset (extraction), Asset→Prose (composition), Prose→Output (validation)
 - Reference state-specific CANONs when relevant
 
@@ -42,7 +42,7 @@ When you discover or implement FSM-specific fixes:
 - **FSM structure issue** → Add to `machine/CANON.md`
 - **State-specific constraint** → Add to state CANON (episodes/, assets/, prose/, output/)
 - **Reusable protocol** → Add to `PROTOCOLS.md`
-- **Pattern composition** → Add to `PATTERNS.md`
+- **Pattern composition** → Add to `SOLUTIONS.md`
 - **New FSM term** → Add to `VOCABULARY.md`
 
 **FSM-specific questions to ask:**
@@ -135,7 +135,7 @@ When you discover or implement FSM-specific fixes:
 
 **FSM-specific additions:**
 - FSM structure changes require updating FSM_SPECIFICATION.md
-- Protocol/pattern changes require updating PROTOCOLS.md or PATTERNS.md
+- Protocol/pattern changes require updating PROTOCOLS.md or SOLUTIONS.md
 - State-specific changes require updating state CANONs
 - All changes must maintain 4-state structure integrity
 

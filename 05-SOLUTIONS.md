@@ -1,12 +1,12 @@
-# PATTERNS
+# SOLUTIONS
 
 Orchestrated protocol compositions for common use cases.
 
-Patterns combine atomic protocols from PROTOCOLS.md into reusable templates.
+Solutions combine atomic protocols from PROTOCOLS.md into reusable templates.
 
 ---
 
-## Pattern Architecture
+## Solution Architecture
 
 ```mermaid
 graph TB
@@ -19,11 +19,11 @@ graph TB
         reindex[reindex]
     end
 
-    subgraph Patterns[Orchestrated Patterns]
-        registry[registry_entity_pattern]
-        ledger[ledger_pattern]
-        fsm[fsm_state_pattern]
-        reindexable[reindexable_artifact_pattern]
+    subgraph Solutions[Orchestrated Solutions]
+        registry[registry_entity_solution]
+        ledger[ledger_solution]
+        fsm[fsm_state_solution]
+        reindexable[reindexable_artifact_solution]
     end
 
     immut --> registry
@@ -43,15 +43,15 @@ graph TB
     valid --> reindexable
 ```
 
-**Figure PT-1: Patterns compose atomic protocols for common scenarios.**
+**Figure PT-1: Solutions compose atomic protocols for common scenarios.**
 
-Each pattern provides a ready-to-use template for specific artifact types.
+Each solution provides a ready-to-use template for specific artifact types.
 
 ---
 
-## registry_entity_pattern
+## registry_entity_solution
 
-**Purpose:** Standard pattern for ledger entries (assets, references, etc.)
+**Purpose:** Standard solution for ledger entries (assets, references, etc.)
 
 **Composition:**
 
@@ -69,7 +69,7 @@ graph LR
     RP -.applies to.-> ENT[entity itself]
 ```
 
-**Figure PT-2: Registry entity pattern ensures stable, traceable, protected entries.**
+**Figure PT-2: Registry entity solution ensures stable, traceable, protected entries.**
 
 ---
 
@@ -96,7 +96,7 @@ graph LR
 ```markdown
 assets/CANON.md
 
-Asset entries use: registry_entity_pattern
+Asset entries use: registry_entity_solution
 
 Parameters:
 - id field: id
@@ -119,15 +119,15 @@ Parameters:
 
 ---
 
-## ledger_pattern
+## ledger_solution
 
-**Purpose:** Complete pattern for registry files (LEDGER.md, indexes, catalogs)
+**Purpose:** Complete solution for registry files (LEDGER.md, indexes, catalogs)
 
 **Composition:**
 
 ```mermaid
 graph TB
-    LP[ledger_pattern] --> REP[registry_entity_pattern]
+    LP[ledger_solution] --> REP[registry_entity_solution]
     LP --> SEQ[sequential_protocol]
     LP --> STR[structured_protocol]
     LP --> VAL[validation_protocol]
@@ -138,13 +138,13 @@ graph TB
     VAL --> File[Applies to: Ledger file]
 ```
 
-**Figure PT-3: Ledger pattern adds sequencing and structure to registry entities.**
+**Figure PT-3: Ledger solution adds sequencing and structure to registry entities.**
 
 ---
 
 ### Protocol Composition
 
-**Inherits:** `registry_entity_pattern` for all entries
+**Inherits:** `registry_entity_solution` for all entries
 
 **Adds:**
 1. `sequential_protocol`:
@@ -167,7 +167,7 @@ graph TB
 ```markdown
 assets/CANON.md
 
-LEDGER.md uses: ledger_pattern
+LEDGER.md uses: ledger_solution
 
 Entry structure:
 - id: asset-NNNN (sequential, starting 0001)
@@ -181,16 +181,16 @@ Entry structure:
 
 ### What It Guarantees
 
-✓ All guarantees from registry_entity_pattern
+✓ All guarantees from registry_entity_solution
 ✓ Sequential numbering (asset-0001, 0002, 0003...)
 ✓ Structured entries (required fields present)
 ✓ Continuous validation
 
 ---
 
-## fsm_state_pattern
+## fsm_state_solution
 
-**Purpose:** Pattern for FSM state directories (episodes/, prose/, output/)
+**Purpose:** Solution for FSM state directories (episodes/, prose/, output/)
 
 **Composition:**
 
@@ -213,7 +213,7 @@ stateDiagram-v2
     }
 ```
 
-**Figure PT-4: FSM state pattern validates dependencies, mutations, and reindex status.**
+**Figure PT-4: FSM state solution validates dependencies, mutations, and reindex status.**
 
 ---
 
@@ -244,7 +244,7 @@ stateDiagram-v2
 ```markdown
 prose/CANON.md
 
-Prose state uses: fsm_state_pattern
+Prose state uses: fsm_state_solution
 
 Dependencies:
 - ../assets/LEDGER.md (must exist)
@@ -271,7 +271,7 @@ Reindex: optional (for major rewrites)
 
 ---
 
-## reindexable_artifact_pattern
+## reindexable_artifact_solution
 
 **Purpose:** Artifacts that are normally immutable but can be reindexed
 
@@ -328,7 +328,7 @@ stateDiagram-v2
 ```markdown
 episodes/CANON.md
 
-Episodes use: reindexable_artifact_pattern
+Episodes use: reindexable_artifact_solution
 
 Immutability trigger: Assets extracted from episode
 
@@ -355,35 +355,35 @@ Validation:
 
 ---
 
-## Pattern Selection Guide
+## Solution Selection Guide
 
 ```mermaid
 graph TD
     Start{What are you governing?}
 
     Start -->|Ledger entries| Registry{Need full ledger?}
-    Registry -->|Yes| UseLedger[Use: ledger_pattern]
-    Registry -->|No, just entries| UseRegistry[Use: registry_entity_pattern]
+    Registry -->|Yes| UseLedger[Use: ledger_solution]
+    Registry -->|No, just entries| UseRegistry[Use: registry_entity_solution]
 
     Start -->|FSM state| StateType{What kind?}
-    StateType -->|Needs reindexing| UseReindex[Use: reindexable_artifact_pattern]
-    StateType -->|Always mutable| UseFSM1[Use: fsm_state_pattern<br/>mutation: always]
-    StateType -->|Immutable output| UseFSM2[Use: fsm_state_pattern<br/>mutation: none]
+    StateType -->|Needs reindexing| UseReindex[Use: reindexable_artifact_solution]
+    StateType -->|Always mutable| UseFSM1[Use: fsm_state_solution<br/>mutation: always]
+    StateType -->|Immutable output| UseFSM2[Use: fsm_state_solution<br/>mutation: none]
 
     Start -->|Custom| Manual[Compose atomic<br/>protocols manually]
 ```
 
-**Figure PT-6: Decision tree for selecting the right pattern.**
+**Figure PT-6: Decision tree for selecting the right solution.**
 
 ---
 
-## Extending Patterns
+## Extending Solutions
 
-Create new patterns by composing atomic protocols:
+Create new solutions by composing atomic protocols:
 
 ```markdown
-my_custom_pattern:
-  = base_pattern
+my_custom_solution:
+  = base_solution
   + additional_protocol_1
   + additional_protocol_2
   - removed_protocol (if overriding)
@@ -392,8 +392,8 @@ my_custom_pattern:
 Example:
 
 ```markdown
-versioned_ledger_pattern:
-  = ledger_pattern
+versioned_ledger_solution:
+  = ledger_solution
   + version_protocol (track ledger versions)
   + snapshot_protocol (preserve history)
 ```
@@ -402,18 +402,18 @@ versioned_ledger_pattern:
 
 ## AI Interprets, Humans Decide
 
-**AI interprets patterns:**
-- Recognizes pattern names
+**AI interprets solutions:**
+- Recognizes solution names
 - Applies composed protocols
 - Validates according to rules
 
-**Humans decide patterns:**
-- Which pattern fits the use case
+**Humans decide solutions:**
+- Which solution fits the use case
 - What parameters to provide
-- When to create custom patterns
+- When to create custom solutions
 
-Patterns make the AI's job easier while keeping humans in control.
+Solutions make the AI's job easier while keeping humans in control.
 
 ---
 
-End PATTERNS.
+End SOLUTIONS.
