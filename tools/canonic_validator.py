@@ -405,7 +405,8 @@ class SyntacticValidator:
                 continue
 
             # Extract constraints (sections with ### headers)
-            constraints = re.findall(r'###\s+(.+?)$(.*?)(?=###|\Z)',
+            # Match ### only at line start to avoid matching "### level headings" in content
+            constraints = re.findall(r'^###\s+(.+?)$(.*?)(?=^###|\Z)',
                                    content, re.MULTILINE | re.DOTALL)
 
             for constraint_name, constraint_body in constraints:
