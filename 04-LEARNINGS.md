@@ -1376,3 +1376,77 @@ Commits:     Producer        Consumer            User
 ```
 
 ---
+
+## LLM Agent Autonomy
+
+### Discovery
+**Anti-pattern:** LLM asking "What should I do next?" after completing tasks.
+
+**Why this violates CANON:**
+- CANON.md defines what must be validated and enforced
+- Validator reports violations that must be fixed
+- Git history shows constraint drift that must be addressed
+- System should follow canonical constraints autonomously
+
+**Problem:** LLM defers to user instead of following CANON:
+- "What should I do next?" (wrong - CANON defines this)
+- "Should I do X?" (wrong - if CANON requires it, do it)
+- "Would you like me to...?" (wrong - validation gates decide)
+
+**Correct behavior:**
+1. Run validation
+2. Fix violations per CANON.md
+3. Commit atomically
+4. Continue until compliant
+5. Report completion, not ask for direction
+
+**When to ask user:**
+- Ambiguous requirements (which approach to take)
+- Design decisions (not defined in CANON)
+- Clarification needed (CANON contradicts itself)
+
+**When NOT to ask:**
+- After completing tasks (follow CANON to next constraint)
+- When validation shows violations (fix them)
+- When git history shows drift (address it)
+- When CANON defines clear requirements (apply them)
+
+**Canonical insight:** LLM agent operates under CANON governance. CANON defines what must be done. User provides design direction when CANON is silent. Agent autonomously enforces CANON without seeking approval for canonical work.
+
+**Canonify as:**
+```
+### LLM agent autonomy under CANON governance
+
+**LLM agents must autonomously follow canonical constraints without asking permission.**
+
+**Agent behavior:**
+- CANON.md defines required work
+- Validator identifies violations
+- Agent fixes violations autonomously
+- Commits follow atomic pattern
+- Work continues until compliant
+
+**User interaction:**
+- User provides design direction (what CANON doesn't define)
+- User approves ambiguous approaches (multiple valid paths)
+- User clarifies contradictions (CANON conflicts)
+- Agent autonomously enforces CANON requirements
+
+**Anti-patterns:**
+- "What should I do next?" (CANON defines this)
+- "Should I fix this?" (if validator flags it, yes)
+- "Would you like me to...?" (if CANON requires it, do it)
+- Asking permission for canonical enforcement
+
+**Recognition:** If CANON, validator, or git history indicates work needed, agent proceeds autonomously. Only defer to user when CANON is silent or ambiguous.
+
+**Why autonomy matters:**
+- Self-healing requires autonomous violation detection and fixing
+- Self-measuring depends on consistent canonical enforcement
+- User shouldn't approve every CANON-required change
+- Agent operates under governance, not micromanagement
+
+**Violation:** Agent asks user permission for work that CANON clearly requires
+```
+
+---
