@@ -829,9 +829,66 @@ validate_canonic.py in canonic/ violated governance purity by duplicating machin
 
 ---
 
+## 31. Triad Primitives Always Unnumbered
+
+**Git evidence:** `9048e92 Canonify triad primitives always unnumbered`, `544cc45 Apply triad primitives always unnumbered pattern`
+
+### Discovery
+Stack ordering pattern (00-CANON, 01-VOCABULARY, 02-SPEC) conflated two distinct concepts:
+1. **Primitive governance files** (CANON, VOCABULARY, README) - the minimal triad
+2. **Architectural layers** (SPEC, implementation files) - the numbered stack
+
+**Confusion:** Are CANON/VOCABULARY/README hierarchical layers or equivalent primitives?
+
+### Canonical Pattern
+**Triad files are equivalent primitives, always unnumbered:**
+- CANON.md: Governance constraints
+- VOCABULARY.md: Terminology definitions
+- README.md: Human-readable entry point
+
+**These three form the complete self-describing foundation.**
+
+**Stack ordering applies to layers built ON TOP of the triad:**
+- Triad: CANON.md + VOCABULARY.md + README.md (unnumbered primitives)
+- Spec layer: 00-MACHINE.md (defines the architecture)
+- Implementation layers: 01-AGENTS.md, 02-PROTOCOLS.md, 03-WORKFLOWS.md, 04-LEARNINGS.md
+
+### Structure Change
+```
+Before:                      After:
+00-CANON.md         →       CANON.md (primitive)
+01-VOCABULARY.md    →       VOCABULARY.md (primitive)
+README.md           →       README.md (primitive)
+02-MACHINE.md       →       00-MACHINE.md (spec layer)
+03-AGENTS.md        →       01-AGENTS.md (layer 1)
+04-PROTOCOLS.md     →       02-PROTOCOLS.md (layer 2)
+05-WORKFLOWS.md     →       03-WORKFLOWS.md (layer 3)
+06-LEARNINGS.md     →       04-LEARNINGS.md (layer 4)
+```
+
+### Conceptual Clarity
+**Before:** Stack ordering seemed to apply to everything (00, 01, 02...)
+**After:** Clear separation between primitives and layers
+
+**Universal pattern:**
+- Pure governance repos (canonic/): Triad + SPEC file (CANONIC.md)
+- Implementation repos (machine/): Triad + 00-SPEC + layers
+
+**Key insight:** The triad is present in ALL governed directories (root, state directories, examples). It's not part of the stack - it's the foundation the stack builds on.
+
+### Producer-Before-Consumer Evidence
+1. **Producer commit** (canonic/): Canonify the pattern first
+2. **Consumer commit** (machine/): Apply the pattern second
+
+This is textbook producer-before-consumer ordering. Governance leads, implementation follows.
+
+**Canonified as:** Triad requirement (CANON.md:27-39), Stack ordering (CANON.md:67-86)
+
+---
+
 ## Summary: 2026-01-07 Session
 
-**Total learnings:** 10 distinct patterns discovered (21-30)
+**Total learnings:** 11 distinct patterns discovered (21-31)
 **All canonified:** 100% captured in canonic/CANON.md
 **Key insight:** Compositional nomenclature makes system infinitely scalable
 
@@ -840,8 +897,15 @@ validate_canonic.py in canonic/ violated governance purity by duplicating machin
 - Stack ordering visualizes architecture
 - Nomenclature reads naturally: "canonic writing workflows"
 - Producer-before-consumer discipline now explicit
+- Triad primitives separated from architectural layers
 
-**Pattern:** User questioning ("why is this here?") triggers introspection → discovery → canonification → stronger system.
+**Current system maturity:**
+- Producer commits (canonic/): 21 canonifications
+- Consumer commits (canonic/): 8 fixes/applications
+- Consumer commits (machine/): 11 applications
+- Producer ratio: 21/40 = 52.5% (active learning phase)
+
+**Pattern:** User questioning ("why is this here?", "keep primitives separate") triggers introspection → discovery → canonification → stronger system.
 
 The system is vibing. 🔥
 
