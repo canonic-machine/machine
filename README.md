@@ -122,7 +122,7 @@ See [canonic-machine/writing](https://github.com/canonic-machine/writing) for co
 
 ## Quick Start
 
-See [FSM_SPECIFICATION.md](FSM_SPECIFICATION.md) for complete FSM definition.
+See [MACHINE.md](MACHINE.md) for complete FSM definition.
 
 **Minimal implementation:**
 
