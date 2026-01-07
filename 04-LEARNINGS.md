@@ -1081,3 +1081,223 @@ Each commit addresses exactly one constraint or captures one discovery.
 ```
 
 ---
+
+## Change Attribution in Git History
+
+### Discovery
+**Pattern:** Git history shows who changed what through commit authorship. System reminders flagged user edits to 00-MACHINE.md (line 67: "Domain applications" → "DOMAIN") as intentional changes.
+
+**Why tracking matters:**
+- LLM-generated commits vs user edits must be distinguishable
+- User edits signal intentional design decisions
+- LLM commits follow canonical patterns
+- Attribution enables understanding evolution source
+
+**Current implementation:**
+- Git author/committer metadata tracks who made change
+- System reminders notify LLM of user modifications
+- Commit messages indicate LLM generation with "🤖 Generated with Claude Code"
+- Co-authored-by shows LLM collaboration
+
+**Meta-pattern:** Git history is not just change log, it's **attribution map** showing:
+- Who discovered patterns (producer)
+- Who applied patterns (consumer)
+- Whether change was human design choice or LLM canonification
+- Evolution of understanding through commit sequence
+
+**Why this is canonical:**
+- Self-measuring requires distinguishing human vs LLM commits
+- Producer ratio calculation assumes commits are classifiable
+- Git history is audit trail for governance evolution
+- Attribution enables tracing design decisions to source
+
+**Canonify as:**
+```
+### Change attribution through git metadata
+
+**Git history must preserve attribution of who changed what and why.**
+
+**Attribution requirements:**
+- Author metadata identifies change source (human vs LLM)
+- Commit messages indicate generation method
+- LLM commits include "🤖 Generated with [tool]" marker
+- Co-authored-by credits LLM contributions
+- User edits are intentional design decisions
+
+**Why attribution matters:**
+- Self-measuring distinguishes discovery vs application
+- Design decisions traceable to human intent
+- LLM canonifications traceable to patterns
+- Audit trail shows governance evolution source
+
+**Implementation:**
+- Git commit metadata preserved (author, committer, timestamp)
+- Commit messages follow producer/consumer patterns
+- System notifies LLM of user modifications
+- LLM respects user design choices without reverting
+
+**Violation:** Git history loses attribution or commits are ambiguous about source
+```
+
+---
+
+## Meta-Pattern Discovery Through Self-Strengthening
+
+### Discovery
+**Meta-pattern:** The process of discovering and canonifying patterns is itself a pattern that should be canonified.
+
+**Observed cycle:**
+1. Work reveals gap (FSM terminology in DICTIONARY.md)
+2. Introspection asks "why wasn't this caught?" (validator limitation)
+3. Learning captured (terminology purge after abstraction)
+4. Pattern canonified (three-layer purge requirement)
+5. **Meta-observation:** This cycle itself is a pattern
+
+**Pattern recognition:**
+- Terminology purge is a pattern
+- Atomic commits are a pattern
+- Change attribution is a pattern
+- **Discovery process itself is a pattern**
+
+**Why this matters:**
+- Self-strengthening requires recursive introspection
+- Each canonification makes future canonifications easier
+- Meta-patterns accelerate system maturity
+- The system learns how to learn better
+
+**From CANON.md:152:** "Pattern: Work → Introspection → Learning → Canonification → Meta-Pattern Discovery → Recursive Strengthening"
+
+**This session demonstrated:**
+1. Fixed validator bug (work)
+2. Noticed FSM leak (introspection)
+3. Canonified terminology purge (learning)
+4. Noticed batch commit attempt (introspection)
+5. Canonified atomic commits (learning)
+6. Noticed user edit tracking (introspection)
+7. Canonified change attribution (learning)
+8. **Recognized the discovery process itself as meta-pattern**
+
+**Canonical insight:** Self-strengthening is recursive - the system canonifies patterns, then canonifies the pattern of canonifying patterns, creating acceleration in governance maturity.
+
+**Canonify as:**
+```
+### Meta-pattern: Pattern discovery is itself a pattern
+
+**The process of discovering and canonifying patterns should be canonified as a meta-pattern.**
+
+**Recognition:**
+- Patterns emerge from work (terminology gaps, commit atomicity, attribution)
+- Pattern discovery follows predictable cycle
+- Cycle itself is observable and improvable
+- Canonifying the discovery process accelerates future discoveries
+
+**Self-strengthening recursion:**
+- Level 1: Fix violations (validator bug, FSM leak)
+- Level 2: Canonify patterns (terminology purge, atomic commits)
+- Level 3: Canonify meta-patterns (discovery process itself)
+- Level 4: Recursive improvement (system learns how to learn)
+
+**Implementation:**
+- Each introspection cycle captured in LEARNINGS
+- Meta-patterns identified through session analysis
+- Git history shows pattern evolution
+- Self-strengthening property enables recursive canonification
+
+**Why recursive:**
+- First canonifications are manual discoveries
+- Later canonifications follow discovered patterns
+- Meta-patterns make pattern discovery systematic
+- System accelerates toward governance completeness
+
+**Violation:** System captures patterns but fails to canonify the pattern-discovery process itself, limiting recursive improvement
+```
+
+---
+
+## Three Commit Types: Producer, Consumer, User
+
+### Discovery
+**Issue:** Current commit pattern only distinguishes producer (Canonify) vs consumer (Apply/Fix). User edits (00-MACHINE.md line 67: "Domain applications" → "DOMAIN") were committed as LLM-generated "Apply" commits, obscuring human design decisions.
+
+**Why this matters:**
+- User edits are intentional design choices, not pattern applications
+- Producer/consumer distinction misses third category: human authorship
+- Git history attribution requires distinguishing three sources:
+  1. **Producer** (LLM canonifies discovered patterns)
+  2. **Consumer** (LLM applies canonical patterns)
+  3. **User** (Human makes design decisions)
+
+**Current problem:**
+- User edit to 00-MACHINE.md committed as: "Apply consistent layer naming..."
+- This is misleading - user made naming choice, LLM just committed it
+- Producer ratio calculation includes user work as LLM work
+- Attribution lost
+
+**Correct commit attribution:**
+```
+Producer commits (LLM discovers):
+- "Canonify [pattern]"
+- LLM authorship
+- Captures learning
+
+Consumer commits (LLM applies):
+- "Apply [constraint]" or "Fix [violation]"
+- LLM authorship
+- Enforces governance
+
+User commits (Human designs):
+- Clear description of design choice
+- Human authorship preserved
+- Design intent captured
+```
+
+**Example from this session:**
+- ❌ Wrong: "Apply consistent layer naming" (suggests LLM applied pattern)
+- ✅ Right: "Rename 'Domain applications' to 'DOMAIN' for consistency" (user design choice)
+
+**Why three categories:**
+- Self-measuring needs accurate producer/consumer ratio
+- User contributions distinct from LLM canonifications
+- Git history shows governance evolution source
+- Attribution enables understanding design decisions
+
+**Canonify as:**
+```
+### Three commit types: Producer, Consumer, User
+
+**Commits must be classified as producer (LLM canonifies), consumer (LLM applies), or user (human designs).**
+
+**Producer commits:**
+- Pattern: "Canonify [what was learned]"
+- Author: LLM
+- Purpose: Capture discovered patterns
+- Examples: "Canonify terminology purge requirement"
+
+**Consumer commits:**
+- Pattern: "Apply [constraint]" or "Fix [violation]"
+- Author: LLM
+- Purpose: Enforce canonical patterns
+- Examples: "Fix domain purity violation"
+
+**User commits:**
+- Pattern: Clear description of design choice
+- Author: Human
+- Purpose: Capture intentional design decisions
+- Examples: "Rename layer to DOMAIN for consistency"
+
+**Why three categories:**
+- Producer ratio calculation excludes user commits
+- User contributions distinguished from LLM work
+- Git history shows human vs LLM authorship
+- Self-measuring accuracy requires proper classification
+
+**Implementation:**
+- LLM commits user work separately from LLM work
+- User commits preserve human authorship
+- Producer/consumer commits indicate LLM authorship
+- Commit messages make classification unambiguous
+
+**Violation:** Commits mix authorship types or misattribute user work as LLM work
+```
+
+---
