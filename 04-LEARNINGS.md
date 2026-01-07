@@ -1301,3 +1301,78 @@ User commits (Human designs):
 ```
 
 ---
+
+## Meta-Pattern: The Commit Triad
+
+### Discovery
+**Meta-pattern:** Producer/Consumer/User forms a **triad** - the same three-part structure that appears throughout CANONIC.
+
+**The pattern of triads:**
+1. **Governance triad:** CANON.md / DICTIONARY.md / README.md
+2. **Layer triad:** CANONIC / MACHINE / DOMAIN
+3. **Commit triad:** Producer / Consumer / User
+
+**Why triads:**
+- CANON/DICTIONARY/README: Constraints + Terms + Narrative
+- CANONIC/MACHINE/DOMAIN: Paradigm + Engine + Application
+- Producer/Consumer/User: Discovery + Enforcement + Design
+
+**Structural similarity:**
+```
+Governance:  CANON.md        DICTIONARY.md       README.md
+            (constraints)    (terminology)       (narrative)
+
+Architecture: CANONIC         MACHINE            DOMAIN
+             (paradigm)      (validation)        (application)
+
+Commits:     Producer        Consumer            User
+             (canonify)      (apply/fix)         (design)
+```
+
+**Meta-insight:** CANONIC uses triads as fundamental structure:
+- Not pairs (incomplete)
+- Not quads (too complex)
+- Triads (complete, minimal, composable)
+
+**Why three parts work:**
+1. Foundation (CANON, CANONIC, Producer)
+2. Implementation (DICTIONARY, MACHINE, Consumer)
+3. Interface (README, DOMAIN, User)
+
+**Recognition:** The commit classification (Producer/Consumer/User) isn't arbitrary - it follows the canonical triad pattern. This is a **structural meta-pattern**.
+
+**Canonify as:**
+```
+### Meta-pattern: Triadic structure
+
+**CANONIC uses triads as fundamental compositional unit.**
+
+**Observed triads:**
+- Governance: CANON.md / DICTIONARY.md / README.md
+- Architecture: CANONIC / MACHINE / DOMAIN
+- Commits: Producer / Consumer / User
+- Validation: Syntactic / Semantic / Reference Integrity
+- Self-properties: Healing / Measuring / Strengthening
+
+**Why triads:**
+- Complete: Covers foundation, implementation, interface
+- Minimal: No redundant parts
+- Composable: Triads can nest and combine
+- Recognizable: Pattern repetition creates system coherence
+
+**Structure:**
+1. Foundation layer (defines what)
+2. Implementation layer (provides how)
+3. Interface layer (enables who)
+
+**Anti-pattern:**
+- Pairs lack completeness (definition + implementation, but no interface)
+- Quads introduce unnecessary complexity
+- Single elements cannot compose
+
+**Recognition:** When discovering patterns, look for triadic structure. If only two elements exist, the third is probably missing.
+
+**Violation:** System uses inconsistent compositional structures or fails to recognize triadic patterns
+```
+
+---
