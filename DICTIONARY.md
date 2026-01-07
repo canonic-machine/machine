@@ -37,29 +37,13 @@ A failed validation check that blocks transition to next state.
 
 ---
 
-## FSM Infrastructure
-
-### FSM
-Finite State Machine. A system with discrete states and defined transitions between them. Domain applications define their own FSMs.
-
-### state
-A discrete stage in an FSM with specific constraints and artifacts. State names are domain-specific.
-
-### state transition
-Movement from one state to another, governed by validation gates.
-
----
-
-## Git-FSM Concepts
+## Git Commit Concepts
 
 ### atomic commit
 A git commit containing one logical change addressing one constraint.
 
 ### consumer commit
 A commit that applies canonical constraints or fixes violations. Uses "Apply" or "Fix" prefix.
-
-### git-FSM
-The implementation pattern where git commits are FSM state transitions with validation acting as gates.
 
 ### producer commit
 A commit that canonifies new patterns or constraints. Uses "Canonify" prefix.
@@ -85,13 +69,13 @@ The property that the system improves through git-based introspection cycles and
 ## Repository Concepts
 
 ### domain application
-A repository that inherits from MACHINE and implements a domain-specific FSM. Examples: WRITING, DOCUMENTATION, RESEARCH.
+A repository that inherits from MACHINE and implements domain-specific validation and workflows. Examples: WRITING, DOCUMENTATION, RESEARCH.
 
 ### governance repository
 A repository that defines canonical constraints without implementation. Must include examples directory. Only CANONIC is governance.
 
 ### validation engine
-The layer that implements constraint checking, reference integrity, and FSM infrastructure without domain-specific patterns.
+The layer that implements constraint checking, reference integrity, and git-based validation infrastructure without domain-specific patterns.
 
 ---
 
