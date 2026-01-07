@@ -443,7 +443,7 @@ for py_file in self.root.rglob('*.py'):
         self.violations.append("executable code in pure governance")
 ```
 
-**CANON.md Definition ([00-CANON.md:42-49](CANON.md#L42-L49)):**
+**CANON.md Definition ([CANON.md:42-49](CANON.md#L42-L49)):**
 > Pure governance repositories contain only: repository specification file, CANON.md, VOCABULARY.md, README.md, and examples.
 
 This is an **allowlist constraint**, not a blocklist constraint.
@@ -638,7 +638,7 @@ SESSION_LEARNINGS.md violated implicit naming pattern observed across all govern
 
 **Learning:** Governance files use single-word UPPERCASE plural nouns (lists of things).
 
-**Canonified as:** File naming convention (00-CANON.md:32-42)
+**Canonified as:** File naming convention (CANON.md:32-42)
 
 ---
 
@@ -832,7 +832,7 @@ validate_canonic.py in canonic/ violated governance purity by duplicating machin
 ## Summary: 2026-01-07 Session
 
 **Total learnings:** 10 distinct patterns discovered (21-30)
-**All canonified:** 100% captured in canonic/00-CANON.md
+**All canonified:** 100% captured in canonic/CANON.md
 **Key insight:** Compositional nomenclature makes system infinitely scalable
 
 **Session achievement:**

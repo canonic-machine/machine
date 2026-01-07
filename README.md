@@ -122,7 +122,7 @@ See [canonic-machine/writing](https://github.com/canonic-machine/writing) for co
 
 ## Quick Start
 
-See [02-MACHINE.md](02-MACHINE.md) for complete FSM definition.
+See [00-MACHINE.md](00-MACHINE.md) for complete FSM definition.
 
 **Minimal implementation:**
 
@@ -165,7 +165,7 @@ The FSM applies CANONIC protocols from [canonic-machine/canonic](https://github.
 - **traceability_protocol** for references
 - **validation_protocol** for compliance gates
 
-See [00-CANON.md](00-CANON.md) for FSM-specific constraints.
+See [CANON.md](CANON.md) for FSM-specific constraints.
 
 ---
 

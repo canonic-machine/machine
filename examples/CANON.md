@@ -2,7 +2,7 @@
 
 **Governance for FSM examples directory.**
 
-**Inherits from:** [../00-CANON.md](../00-CANON.md)
+**Inherits from:** [../CANON.md](../CANON.md)
 
 This directory contains example implementations of the CANONIC FSM.
 
