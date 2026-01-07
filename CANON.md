@@ -386,7 +386,12 @@ FSM-level checks:
 - Apply constraint SECOND (consumer commit in implementation repo)
 - Cannot apply non-canonical patterns
 
-**Violation:** Commit message uses prohibited ambiguous patterns, doesn't clearly indicate producer vs consumer action, or consumer commit precedes producer commit
+**Production triggers consumption:**
+- Every producer commit must trigger consumer commits across all affected repositories
+- Machine must be compliant with canonical changes before session ends
+- Validation gates ensure compliance before allowing further work
+
+**Violation:** Commit message uses prohibited ambiguous patterns, doesn't clearly indicate producer vs consumer action, consumer commit precedes producer commit, or producer commit not consumed across affected repositories
 
 ---
 
