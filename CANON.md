@@ -30,12 +30,16 @@ All directories must maintain the triad:
 - CANON.md defines constraints
 - VOCABULARY.md defines terms used in CANON and README
 
+**Violation:** Directory missing CANON.md, VOCABULARY.md, or README.md
+
 ### FSM Structure
 The FSM consists of exactly four states:
 - **episodes/** — Raw input (ungoverned)
 - **assets/** — Registered entities (governed, immutable)
 - **prose/** — Composed content (governed, mutable)
 - **output/** — Validated artifacts (governed, immutable)
+
+**Violation:** Missing state directory or using non-standard state names
 
 ### State Transitions
 
@@ -47,6 +51,8 @@ Transitions are unidirectional with validation gates:
 Backflow allowed only on validation failure:
 - Output validation fails → return to Prose
 - Asset validation fails → return to Episodes
+
+**Violation:** Invalid transition direction or missing validation gate
 
 ---
 
@@ -71,6 +77,8 @@ Backflow allowed only on validation failure:
 - REINDEX to modify if needed
 
 **Protocol:** reindexable_artifact_pattern
+
+**Violation:** Episode file naming non-sequential, modifying episode without REINDEX, or missing triad
 
 ### Assets State
 
@@ -102,6 +110,8 @@ Backflow allowed only on validation failure:
 
 **Protocol:** ledger_pattern
 
+**Violation:** Non-sequential asset IDs, missing LEDGER.md, duplicate assets, missing source traceability, or deleting referenced assets
+
 ### Prose State
 
 **Purpose:** Composed content
@@ -125,6 +135,8 @@ Backflow allowed only on validation failure:
 
 **Protocol:** fsm_state_pattern
 
+**Violation:** Referencing unregistered assets, broken asset references, or missing dependencies
+
 ### Output State
 
 **Purpose:** Final validated artifact
@@ -146,6 +158,8 @@ Backflow allowed only on validation failure:
 
 **Protocol:** fsm_state_pattern (mutation: none)
 
+**Violation:** Generating output with validation failures, output exists during REINDEX, or modifying output directly
+
 ---
 
 ## Transition Rules
@@ -164,6 +178,8 @@ Backflow allowed only on validation failure:
 - Source episode recorded
 - LEDGER updated
 
+**Violation:** Extracting from non-existent episode, creating duplicate assets, or missing source traceability
+
 ### Asset → Prose
 
 **Trigger:** Composition begins
@@ -175,6 +191,8 @@ Backflow allowed only on validation failure:
 **Validation:**
 - All prose references resolve to LEDGER
 - No unregistered entities
+
+**Violation:** Composing without LEDGER, referencing unregistered assets, or broken references
 
 ### Prose → Output
 
@@ -194,6 +212,8 @@ Backflow allowed only on validation failure:
 - Generate output files
 - Create METADATA.md
 - Mark timestamp
+
+**Violation:** Generating output with validation failures, active REINDEX, or unsatisfied dependencies
 
 ---
 

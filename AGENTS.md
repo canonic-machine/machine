@@ -1,8 +1,8 @@
 # AGENTS (machine workspace instructions)
 
-**Inherits from:** [canonic-machine/canonic/AGENTS.md](https://github.com/canonic-machine/canonic/blob/main/AGENTS.md)
+**Implements:** [CANONIC programming protocols](https://github.com/canonic-machine/canonic/blob/main/CANONIC.md)
 
-This file specializes agent behavior for the *machine* workspace. Inherits all core behavior from root AGENTS.md and adds FSM-specific enforcement.
+This file defines agent behavior for the *machine* implementation framework. Follows CANONIC governance and adds FSM-specific enforcement.
 
 ---
 
