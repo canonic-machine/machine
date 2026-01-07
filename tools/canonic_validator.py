@@ -70,12 +70,64 @@ class SyntacticValidator:
     def validate_all(self) -> List[Violation]:
         """Run all syntactic validations."""
         self.validate_triad()
+        self.validate_dictionary_ordering()
         self.validate_naming_conventions()
         self.validate_file_structure()
         self.validate_inheritance_declaration()
         self.validate_constraint_format()
         self.validate_git_history_signals()
         return self.violations
+
+    def validate_dictionary_ordering(self) -> None:
+        """Validate DICTIONARY.md alphabetical ordering."""
+        for dict_file in self.root.rglob("DICTIONARY.md"):
+            if any(part.startswith('.') for part in dict_file.parts):
+                continue
+
+            content = self._read_file(dict_file)
+            if not content:
+                continue
+
+            # Extract term headers (### level)
+            current_section = None
+            section_terms = []
+
+            for line in content.split('\n'):
+                # Track sections (##)
+                if line.startswith('## '):
+                    # Check previous section
+                    if section_terms:
+                        sorted_terms = sorted(section_terms, key=str.lower)
+                        if section_terms != sorted_terms:
+                            self.violations.append(Violation(
+                                layer="syntactic",
+                                category="dictionary_ordering",
+                                artifact=str(dict_file.relative_to(self.root)),
+                                requirement="DICTIONARY.md alphabetical ordering",
+                                details=f"Terms not alphabetically ordered in section '{current_section}'. Expected order: {sorted_terms}",
+                                severity=ViolationSeverity.CRITICAL,
+                                auto_fixable=True
+                            ))
+                    current_section = line[3:].strip()
+                    section_terms = []
+                # Extract terms
+                elif line.startswith('### '):
+                    term = line[4:].strip()
+                    section_terms.append(term)
+
+            # Check final section
+            if section_terms:
+                sorted_terms = sorted(section_terms, key=str.lower)
+                if section_terms != sorted_terms:
+                    self.violations.append(Violation(
+                        layer="syntactic",
+                        category="dictionary_ordering",
+                        artifact=str(dict_file.relative_to(self.root)),
+                        requirement="DICTIONARY.md alphabetical ordering",
+                        details=f"Terms not alphabetically ordered in section '{current_section}'. Expected order: {sorted_terms}",
+                        severity=ViolationSeverity.CRITICAL,
+                        auto_fixable=True
+                    ))
 
     def validate_git_history_signals(self) -> None:
         """
@@ -246,8 +298,8 @@ class SyntacticValidator:
             return []
 
     def validate_triad(self) -> None:
-        """Validate triad requirement: CANON.md, VOCABULARY.md, README.md."""
-        triad_files = {"CANON.md", "VOCABULARY.md", "README.md"}
+        """Validate triad requirement: CANON.md, DICTIONARY.md, README.md."""
+        triad_files = {"CANON.md", "DICTIONARY.md", "README.md"}
 
         for dirpath in self._get_governed_directories():
             missing = []
@@ -617,13 +669,13 @@ Return ONLY valid JSON (no markdown):
                 self._log_llm_error("enforceability check", canon_file, e)
 
     def validate_terminology_semantic(self) -> None:
-        """Validate all terms are defined in VOCABULARY.md."""
+        """Validate all terms are defined in DICTIONARY.md."""
         for canon_file in self.root.rglob("CANON.md"):
             if any(part.startswith('.') for part in canon_file.parts):
                 continue
 
             canon_content = self._read_file(canon_file)
-            vocab_file = canon_file.parent / "VOCABULARY.md"
+            vocab_file = canon_file.parent / "DICTIONARY.md"
             vocab_content = self._read_file(vocab_file) if vocab_file.exists() else ""
 
             if not canon_content:
@@ -631,7 +683,7 @@ Return ONLY valid JSON (no markdown):
 
             prompt = f"""Check terminology discipline.
 
-Constraint: "All technical terms must be defined in VOCABULARY.md"
+Constraint: "All technical terms must be defined in DICTIONARY.md"
 
 Technical terms are:
 - Domain-specific terminology
@@ -830,14 +882,14 @@ Return ONLY valid JSON (no markdown):
         """Basic terminology check without LLM (fallback)."""
         # Simple check: terms in CANON should exist in VOCABULARY
         for canon_file in self.root.rglob("CANON.md"):
-            vocab_file = canon_file.parent / "VOCABULARY.md"
+            vocab_file = canon_file.parent / "DICTIONARY.md"
             if not vocab_file.exists():
                 self.violations.append(Violation(
                     layer="semantic",
                     category="terminology",
                     artifact=str(canon_file.relative_to(self.root)),
                     requirement="Terminology discipline",
-                    details="VOCABULARY.md missing - cannot validate terminology",
+                    details="DICTIONARY.md missing - cannot validate terminology",
                     severity=ViolationSeverity.HIGH
                 ))
 
