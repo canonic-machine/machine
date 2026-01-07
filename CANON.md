@@ -251,6 +251,32 @@ FSM-level checks:
 
 ---
 
+## Validation Implementation
+
+### Validator canon-awareness
+**Validators must derive validation rules from CANON.md, not hardcode constraints.**
+
+**Implementation:**
+- Read canonical triad definition from root CANON.md
+- Validate against current canonical requirements
+- Update automatically when CANON changes
+- Do not hardcode file names or structural requirements
+
+**Violation:** Validator hardcodes constraints (e.g., checking for VOCABULARY.md when canon requires DICTIONARY.md)
+
+### Alphabetical ordering validation
+**DICTIONARY.md files must be validated for alphabetical term ordering.**
+
+**Validation method:**
+- Extract term headers (### level headings)
+- Verify alphabetical order within each section
+- Case-insensitive comparison
+- Syntactic check (free, fast)
+
+**Violation:** DICTIONARY.md terms not alphabetically ordered within sections
+
+---
+
 ## Git-FSM Implementation
 
 ### Git commits as FSM transitions
