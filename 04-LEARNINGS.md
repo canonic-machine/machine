@@ -972,3 +972,61 @@ Historical commits used ambiguous patterns ("Add...", "Update...", "Implement...
 The machine is self-sustaining! 🔥
 
 ---
+
+# Learnings: 2026-01-07
+
+**Insights discovered during abstraction layer separation and domain purity enforcement.**
+
+---
+
+## Terminology Purge After Abstraction Separation
+
+### Discovery
+**Issue:** After moving domain-specific concepts (FSM with Episode→Asset→Prose→Output states) from MACHINE to WRITING, residual terminology remained in MACHINE's DICTIONARY.md.
+
+**Root cause:**
+- Abstraction separation removed implementation artifacts (examples/, domain-specific tools)
+- But terminology definitions in DICTIONARY.md were not purged
+- This created **semantic leakage** - MACHINE claimed to be domain-agnostic while defining domain terms
+
+**Example violations found:**
+- DICTIONARY.md contained "FSM" section defining finite state machines
+- "state" and "state transition" defined as FSM concepts
+- "git-FSM" term used (FSM is domain-specific, git is domain-agnostic)
+- "domain application" described as "implements domain-specific FSM"
+
+**Why validator missed it:**
+- Syntactic validation checks file structure, not semantic consistency
+- No validation rule: "Terms in DICTIONARY must not reference abstracted-away concepts"
+- Validator bug: regex pattern `(?=###|\Z)` matched `### level headings` in content, causing false positive
+
+**Learning:** Abstraction separation requires **three-layer purge**:
+1. Remove implementation artifacts (files, directories)
+2. Remove terminology definitions (DICTIONARY.md entries)
+3. Remove conceptual references (documentation mentions)
+
+**Impact:** MACHINE appeared compliant structurally but violated domain-agnostic constraint semantically.
+
+**Canonify as:**
+```
+### Terminology purge after abstraction
+
+**When separating abstraction layers, terminology must be purged across all three governance files.**
+
+**Purge checklist:**
+1. Implementation artifacts removed (examples/, tools/, code)
+2. DICTIONARY.md entries removed (terms referencing abstracted concepts)
+3. CANON.md constraints reviewed (no references to abstracted patterns)
+4. README.md updated (no descriptions of abstracted functionality)
+5. Cross-references validated (no broken links to removed content)
+
+**Example:** Moving FSM from MACHINE to WRITING requires:
+- Remove FSM examples from machine/
+- Remove "FSM", "state", "state transition" from machine/DICTIONARY.md
+- Update machine/CANON.md to not reference FSM patterns
+- Update machine/README.md to describe git-based validation, not FSM validation
+
+**Violation:** Abstraction separated but terminology remains, creating semantic inconsistency
+```
+
+---
