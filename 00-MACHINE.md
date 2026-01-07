@@ -64,7 +64,7 @@ MACHINE occupies the **validation engine layer** in the three-layer architecture
 
 1. **CANONIC** (paradigm layer) - Defines constraints, validation, inheritance, triad
 2. **MACHINE** (validation engine layer) - Implements constraint checking, git-FSM, self-* properties
-3. **Domain applications** (application layer) - Inherit from MACHINE, add domain-specific FSMs
+3. **DOMAIN** (application layer) - Inherit from MACHINE, add domain-specific FSMs
 
 **MACHINE is domain-agnostic.**
 
