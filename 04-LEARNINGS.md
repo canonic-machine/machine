@@ -1450,3 +1450,60 @@ Commits:     Producer        Consumer            User
 ```
 
 ---
+
+## Session Completion Protocol
+
+### Discovery
+**Pattern:** At end of work session, push commits to remote origin.
+
+**Why this matters:**
+- Git history is canonical record
+- Remote backup preserves work
+- Collaboration requires synchronized state
+- Session boundaries marked by push
+
+**Session workflow:**
+1. Work (fix violations, canonify patterns)
+2. Commit atomically (producer/consumer/user)
+3. Validate (ensure compliance)
+4. Push to origin (synchronize remote)
+
+**Push timing:**
+- End of session (all work committed)
+- Tree clean (no uncommitted changes)
+- Validation passed (or historical signals only)
+- Ready for collaboration
+
+**Why end-of-session push:**
+- Session represents logical unit of work
+- Remote stays synchronized with canonical state
+- Other collaborators can access latest changes
+- Git history preserved remotely
+
+**Canonify as:**
+```
+### Session completion requires push to origin
+
+**At end of work session, push all commits to remote origin.**
+
+**Session completion checklist:**
+1. All work committed atomically
+2. Git tree clean (no uncommitted changes)
+3. Validation run (compliance verified)
+4. Push to origin (synchronize remote)
+
+**Why push at session end:**
+- Session boundary marks logical completion
+- Remote backup preserves canonical record
+- Collaboration requires synchronized state
+- Git history available for analysis
+
+**Command:**
+- `git push` after final validation
+- Verify push succeeded
+- Confirm origin synchronized
+
+**Violation:** Session ends with unpushed commits, leaving remote desynchronized from canonical state
+```
+
+---

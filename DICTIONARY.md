@@ -51,6 +51,12 @@ A commit that canonifies new patterns or constraints. Uses "Canonify" prefix.
 ### producer ratio
 The percentage of commits that are producer (canonification) vs consumer (application). Indicates system maturity phase.
 
+### session
+A logical unit of work bounded by git push to origin. Contains atomic commits addressing constraints and canonifying patterns.
+
+### user commit
+A commit capturing human design decisions. Preserves human authorship, distinct from producer/consumer LLM commits.
+
 ---
 
 ## Self-Properties
