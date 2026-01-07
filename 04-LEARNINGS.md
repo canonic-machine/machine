@@ -1030,3 +1030,54 @@ The machine is self-sustaining! 🔥
 ```
 
 ---
+
+## Atomic Commit Enforcement
+
+### Discovery
+**Issue:** Attempted to commit validator fix + DICTIONARY.md purge + learning canonification in single commit. This violated atomicity constraint.
+
+**Why it's wrong:**
+- Validator fix addresses one constraint (regex parsing bug)
+- DICTIONARY purge addresses different constraint (domain purity)
+- Learning canonification is producer commit (discovery)
+- Batching makes git history unreadable and violates single logical change rule
+
+**Correct approach:**
+1. Commit validator fix: "Fix constraint parsing regex..."
+2. Commit DICTIONARY fix: "Fix domain purity violation..."
+3. Commit learning: "Canonify terminology purge requirement..."
+
+Each commit addresses exactly one constraint or captures one discovery.
+
+**Why this matters:**
+- Git history IS the audit trail
+- Each commit must be independently revertible
+- Producer/consumer ratio calculation requires distinct commits
+- Self-measuring depends on atomic commit classification
+
+**Canonify as:**
+```
+### Commit atomicity enforcement
+
+**Each commit must address exactly one logical change.**
+
+**Atomic commit criteria:**
+- Fixes one constraint violation, OR
+- Applies one canonical pattern, OR
+- Canonifies one discovery
+
+**Non-atomic patterns (prohibited):**
+- Batching multiple fixes in one commit
+- Combining producer and consumer work
+- Mixing unrelated changes "for efficiency"
+
+**Rationale:**
+- Git history is canonical record of system evolution
+- Self-measuring requires classifiable commits
+- Atomicity enables independent revert operations
+- Each commit must be traceable to single constraint
+
+**Violation:** Commit addresses multiple unrelated changes or mixes producer/consumer work
+```
+
+---
