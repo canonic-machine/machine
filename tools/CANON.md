@@ -53,20 +53,28 @@
 - **Required:** Environment loader, configuration management
 - **Protocol:** configuration_protocol
 
+**Violation:** Missing environment loader or configuration management tools
+
 ### LLM Integration Tools
 - **Purpose:** AI-assisted FSM transitions
 - **Required:** Multi-provider client, OpenAI-compatible API
 - **Protocol:** llm_integration_protocol
+
+**Violation:** Missing LLM client or non-OpenAI-compatible interface
 
 ### Semantic Validation Tools
 - **Purpose:** FSM compliance checking
 - **Required:** State validators, protocol enforcers
 - **Protocol:** validation_protocol
 
+**Violation:** Missing validators or incomplete protocol enforcement
+
 ### FSM Transition Tools
 - **Purpose:** Human-AI collaboration for state transitions
 - **Required:** Asset extraction, prose composition assistance
 - **Protocol:** transition_protocol
+
+**Violation:** Missing transition tools or ungoverned AI modifications
 
 ---
 
@@ -153,17 +161,23 @@
 - **Add comprehensive tests**
 - **Validate against machine CANON**
 
+**Violation:** Missing triad or incomplete protocol implementation
+
 ### Deployment Phase
 - **Environment configuration** via .env
 - **Integration testing** with FSM examples
 - **Documentation updates**
 - **Protocol validation**
 
+**Violation:** Missing .env configuration or failed integration tests
+
 ### Operation Phase
 - **Continuous validation** against CANON
 - **Error reporting** with actionable fixes
 - **Performance monitoring**
 - **Protocol updates** as machine evolves
+
+**Violation:** Tool drift from CANON without validation updates
 
 ---
 
@@ -176,11 +190,15 @@
 - Episode availability
 - Prose dependencies
 
+**Violation:** Tool operates without FSM context or violates state constraints
+
 ### Protocol Inheritance
 **Tools inherit protocols from machine/CANON.md:**
 - traceability_protocol for asset references
 - immutability_protocol for IDs
 - validation_protocol for compliance
+
+**Violation:** Tool ignores inherited protocols or creates protocol conflicts
 
 ### Error Handling
 **Standardized error reporting:**
@@ -188,6 +206,8 @@
 - JSON output for machine parsing
 - Human-readable messages
 - Suggested remediation steps
+
+**Violation:** Non-standard exit codes or missing error messages
 
 ---
 
@@ -199,64 +219,24 @@
 - Protocol compliance verified
 - Tests pass with >90% coverage
 
+**Violation:** Tool fails pre-commit validation checks
+
 ### Integration Testing
 - End-to-end FSM workflow testing
 - Multi-provider LLM failover testing
 - Large content validation performance
 - Error condition handling
 
+**Violation:** Tool fails integration testing requirements
+
 ### Documentation Completeness
 - README.md covers all tool usage
 - VOCABULARY.md defines all technical terms
 - CANON.md constraints are testable
 
+**Violation:** Tool documentation incomplete or untestable
+
 ---
 
 End of tools CANON.
 
-
-				# TODO LIST UPDATE REQUIRED - You MUST include the task_progress parameter in your NEXT tool call.
-
-				**Current Progress: 3/6 items completed (50%)**
-
-				- [x] Analyze current validation setup
-				- [x] Examine .env file contents
-				- [x] Understand semantic validation requirements
-				 [x] Create machine/tools/ directory with triad
-				- [ ] Implement OpenAI compatible LLM integration
-				- [ ] Complete semantic validation implementation
-				- [ ] Test and validate the implementation
-
-				
-
-				
-1. To create or update a todo list, include the task_progress parameter in the next tool call
-2. Review each item and update its status:
-   - [x] Analyze current validation setup
-   - [x] Examine .env file contents
-   - [x] Understand semantic validation requirements
-   - [ ] Implement OpenAI compatible LLM integration
-   - [ ] Complete semantic validation implementation
-   - [ ] Test and validate the implementation
-
-				
-
-**Note:** 37% of items are complete. Proceed with the task.
-
-				<environment_details>
-# Visual Studio Code Visible Files
-VOCABULARY.md
-
-# Visual Studio Code Open Tabs
-CANON.md
-VOCABULARY.md
-
-# Current Time
-1/6/2026, 1:32:51 PM (America/New_York, UTC-5:00)
-
-# Context Window Usage
-42,470 / 256K tokens used (17%)
-
-# Current Mode
-ACT MODE
-</environment_details>

@@ -24,11 +24,15 @@ All 4 states must exist:
 - prose/ (with draft.md)
 - output/ (with validated artifact when compliant)
 
+**Violation:** Missing required FSM state directory
+
 ### Traceability
 
 - All assets trace to episode 001
 - All prose references trace to registered assets
 - Output only exists when validation passes
+
+**Violation:** Asset or prose reference lacks traceable source
 
 ---
 

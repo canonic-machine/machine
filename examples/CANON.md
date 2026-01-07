@@ -28,10 +28,14 @@ Each example should:
 - Demonstrate best practices
 - Be minimal (no unnecessary complexity)
 
+**Violation:** Example lacks clear purpose or contains unnecessary complexity
+
 ### Naming
 
 - Use descriptive directory names (minimal, basic-ledger, etc.)
 - Follow existing naming conventions from parent
+
+**Violation:** Example uses non-descriptive names or violates naming conventions
 
 ---
 

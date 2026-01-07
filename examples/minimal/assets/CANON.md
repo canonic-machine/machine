@@ -12,6 +12,8 @@
 
 - LEDGER.md (single source of truth)
 
+**Violation:** LEDGER.md missing from assets state
+
 ### Asset structure
 
 Each asset must have:
@@ -21,11 +23,15 @@ Each asset must have:
 - source_episode: NNN
 - notes: optional
 
+**Violation:** Asset missing required fields or uses invalid format
+
 ### Invariants
 
 - Asset IDs are immutable
 - Source episodes must exist
 - Cannot delete assets referenced in prose
+
+**Violation:** Asset ID changed, source episode missing, or referenced asset deleted
 
 ---
 
