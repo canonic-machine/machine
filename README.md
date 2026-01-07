@@ -222,4 +222,46 @@ MIT — See [LICENSE](LICENSE)
 
 ---
 
+## System Maturity
+
+This implementation repository is in **active learning phase** (52.5% producer ratio).
+
+**Recent discoveries (see [04-LEARNINGS.md](04-LEARNINGS.md)):**
+
+### File Organization Pattern
+The triad (CANON, VOCABULARY, README) are unnumbered primitives that form the self-describing foundation. Numbered stack layers (00-SPEC, 01+) build on top of this foundation:
+
+```
+CANON.md           (primitive: governance constraints)
+VOCABULARY.md      (primitive: terminology)
+README.md          (primitive: human entry point)
+00-MACHINE.md      (spec: FSM architecture definition)
+01-AGENTS.md       (layer: agent patterns)
+02-PROTOCOLS.md    (layer: reusable protocols)
+03-WORKFLOWS.md    (layer: orchestrated sequences)
+04-LEARNINGS.md    (layer: discoveries and evolution)
+```
+
+### Compositional Nomenclature
+File names compose naturally: "canonic [domain] [engine] [output] [component]"
+- Base: "canonic writing machine"
+- Extended: "canonic writing machine workflows"
+- Component files (AGENTS, PROTOCOLS, WORKFLOWS, LEARNINGS) scale universally
+
+### Producer-Before-Consumer Discipline
+This repository consumes patterns canonified in the governance repository:
+1. Governance repo canonifies pattern (producer commit)
+2. Implementation repo applies pattern (consumer commit)
+3. Implementation repo captures learning (introspection commit)
+
+This ordering ensures governance leads implementation.
+
+### Introspection Cycle
+The system strengthens through:
+- Work reveals gaps → Introspection asks "why?" → Learning captured → Pattern canonified → System improves
+
+**Current state:** 11 learnings documented, 100% canonified into governance constraints.
+
+---
+
 End README.
