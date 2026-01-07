@@ -226,6 +226,19 @@ MIT — See [LICENSE](LICENSE)
 
 This implementation repository is in **active learning phase** (52.5% producer ratio).
 
+**Maturity thresholds (inherited from CANONIC):**
+- **New system**: >40% producer commits (rapid learning phase) ← **We are here**
+- **Maturing system**: 10-30% producer commits (refinement phase)
+- **Mature system**: <10% producer commits (stable enforcement)
+
+**Introspective properties (inherited from CANONIC):**
+1. Self-validating: Dual validation (syntactic + semantic)
+2. Self-optimizing: Lean constraints, convergence to syntactic
+3. Self-documenting: Triad foundation provides complete self-description
+4. Self-healing: Git patterns trigger validation responses
+5. Self-measuring: Producer/consumer ratios track maturity
+6. Self-strengthening: Introspection cycles canonify discoveries
+
 **Recent discoveries (see [04-LEARNINGS.md](04-LEARNINGS.md)):**
 
 ### File Organization Pattern
