@@ -84,11 +84,11 @@ A failed validation check. Blocks transition to next state.
 
 ## Domain Concepts
 
-### domain-agnostic
-The property that the FSM works across different use cases: writing, documentation, research, knowledge management.
-
 ### domain application
 A MACHINE implementation specialized for a specific domain. Named by domain only (WRITING, DOCUMENTATION, RESEARCH). Inherits all MACHINE constraints and adds domain-specific specializations.
+
+### domain-agnostic
+The property that the FSM works across different use cases: writing, documentation, research, knowledge management.
 
 ### domain-sourced
 Content that comes from the specific domain being modeled (lived experiences for writing, requirements for documentation, observations for research).
