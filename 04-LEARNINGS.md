@@ -911,3 +911,64 @@ The system is vibing. 🔥
 
 ---
 
+
+## 32. Introspective Properties Complete
+
+**Git evidence:** `2baa0e3 Canonify self-documenting`, `7cccef8 Canonify self-measuring and self-strengthening`
+
+### Discovery
+Three introspective properties existed, but three more behaviors were observable but not canonified.
+
+**Six complete properties:**
+1. Self-validating: Dual validation, validators validate themselves
+2. Self-optimizing: Lean CANONs, semantic→syntactic convergence  
+3. Self-documenting: Triad foundation, README from sources
+4. Self-healing: Git pattern detection triggers validation
+5. Self-measuring: Producer/consumer ratios track maturity
+6. Self-strengthening: Introspection cycles canonify discoveries
+
+**Canonified as:** Self-documenting (CANON.md:153-178), Self-measuring (CANON.md:204-230), Self-strengthening (CANON.md:232-264)
+
+---
+
+## 33. Commit Message Categorization for Measurability
+
+**Git evidence:** `4f40134 Canonify commit message patterns for measurability`
+
+### Discovery
+Historical commits used ambiguous patterns ("Add...", "Update...", "Implement...") making self-measuring property fail.
+
+**Required patterns:**
+- Producer: "Canonify [what]"
+- Consumer: "Apply [what]", "Fix [what]", "Consume CANON: [what]"
+
+**Prohibited patterns:** Add/Update/Implement/Complete/Enforce/Streamline/Standardize
+
+**Why:** Self-measuring requires distinguishable commits. Git history IS the measurement tool.
+
+**Historical note:** Old commits remain unchanged - they document evolution. Forward-looking constraint only.
+
+**Canonified as:** CANON production vs consumption (CANON.md:286-336)
+
+---
+
+## Summary: 2026-01-07 Session (Final)
+
+**Total learnings:** 13 patterns discovered (21-33)
+**All canonified:** 100% captured in canonic/CANON.md
+
+**Key achievements:**
+- Triad primitives separated from stack layers
+- Six introspective properties complete
+- Commit patterns canonified for measurability
+- Primary outputs documentation requirement
+- Self-documenting protocol applied to both repos
+
+**Final maturity:**
+- Producer commits: 27 canonifications
+- Consumer commits: 22 applications/fixes
+- Producer ratio: **55.1%** (active learning phase)
+
+The machine is self-sustaining! 🔥
+
+---
