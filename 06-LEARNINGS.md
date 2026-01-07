@@ -617,3 +617,233 @@ The system validated itself, found itself wanting, and corrected itself.
 
 ---
 
+# Learnings: 2026-01-07 (Nomenclature & Stack Ordering Session)
+
+**Compositional nomenclature and architectural clarity discovered through introspection.**
+
+**Source:** Derived from git history (canonic/ producer commits 2026-01-07)
+**Commits analyzed:** 15 producer/consumer commits revealing 10 canonifiable patterns
+
+## 21. Single-Word File Naming Convention
+
+**Git evidence:** `278a67c Canonify single-word file naming convention`
+
+### Discovery
+SESSION_LEARNINGS.md violated implicit naming pattern observed across all governance files.
+
+**Pattern observed:**
+- canonic/: CANONIC.md, CANON.md, VOCABULARY.md, README.md
+- machine/: MACHINE.md, CANON.md, VOCABULARY.md, AGENTS.md, PATTERNS.md, PROTOCOLS.md
+- Violation: SESSION_LEARNINGS.md (compound name with underscore)
+
+**Learning:** Governance files use single-word UPPERCASE plural nouns (lists of things).
+
+**Canonified as:** File naming convention (00-CANON.md:32-42)
+
+---
+
+## 22. Stack Ordering Convention
+
+**Git evidence:** `16ed720 Canonify stack ordering convention`, `4a1f340 Canonify inheritance hierarchy`
+
+### Discovery
+Machine repository has natural dependency stack that should be visible in file ordering.
+
+**Architectural stack:**
+- CANON defines constraints (foundation/truth)
+- VOCABULARY defines terms (language)
+- MACHINE defines FSM spec (architecture)
+- AGENTS execute spec
+- PROTOCOLS are atomic operations
+- PATTERNS/workflows orchestrate protocols
+- LEARNINGS capture evolution
+
+**Learning:** Numeric prefixes (00-, 01-, 02-) make architectural dependencies immediately visible in directory listings.
+
+**Pattern:** 00 is always CANON (truth first), spec defines subsequent ordering.
+
+**Canonified as:** Stack ordering for implementation repositories (00-CANON.md:68-82)
+
+---
+
+## 23. Compositional Nomenclature
+
+**Git evidence:** `64166ee Canonify compositional nomenclature pattern`
+
+### Discovery
+User observed: "canonic writing machine books" reads naturally at any composition level.
+
+**Compositional pattern:** `canonic [domain] [engine] [output] [component]`
+
+**Examples:**
+- Base: "canonic writing machine"
+- Extended: "canonic writing machine books"
+- Component: "canonic writing machine protocols"
+- Full: "canonic writing machine books workflows"
+
+**Learning:** Nomenclature composes infinitely while maintaining readability. Works in flat or hierarchical structures.
+
+**Canonified as:** Compositional nomenclature (00-CANON.md:44-67)
+
+---
+
+## 24. Clarity Meta-Pattern
+
+**Git evidence:** `7e64e78 Canonify clarity meta-pattern and WORKFLOWS nomenclature`
+
+### Discovery
+User questioned: "SOLUTIONS - solution to what??"
+
+**Semantic ambiguity:**
+- SOLUTIONS raised questions (solution to what problem?)
+- WORKFLOWS is self-explanatory (orchestrated sequences of protocols)
+
+**Meta-pattern:** File names must clearly communicate contents without opening file.
+
+**Clarity test:**
+- Does name raise questions? → Ambiguous
+- Can unfamiliar reader understand contents? → Clear
+- Prefer descriptive over abstract
+
+**Learning:** Naming clarity prevents cognitive overhead. "Solution to what?" revealed need for self-explanatory names.
+
+**Canonified as:** Clarity meta-pattern (00-CANON.md:61-66)
+
+---
+
+## 25. WORKFLOWS vs SOLUTIONS vs PATTERNS
+
+**Git evidence:** `68ef811 Canonify SOLUTIONS`, `7e64e78 Canonify WORKFLOWS nomenclature`
+
+### Discovery
+Triple semantic conflict resolved through iteration.
+
+**Evolution:**
+1. PATTERNS → "patterns are discovered, not prescribed"
+2. SOLUTIONS → "solution to what?"
+3. WORKFLOWS → Clear! (orchestrated sequences)
+
+**Semantic clarity:**
+- PATTERNS = emergent discoveries (belong in LEARNINGS)
+- SOLUTIONS = ambiguous (reactive, problem-focused)
+- WORKFLOWS = descriptive (orchestrated protocol sequences)
+
+**Learning:** Terminology must avoid semantic conflicts and clearly communicate purpose.
+
+**Canonified as:** WORKFLOWS nomenclature (00-CANON.md:38)
+
+---
+
+## 26. README Exemption from Numbering
+
+**Git evidence:** `6d9380f Canonify README exemption and producer-before-consumer ordering`
+
+### Discovery
+README.md remains unnumbered while other files use stack ordering.
+
+**Rationale:**
+- README is human entry point, not technical stack layer
+- LICENSE is legal requirement, not governance artifact
+- .gitignore is git configuration, not governed content
+
+**Learning:** Not everything belongs in the technical stack. Human-facing and meta files remain outside numbering scheme.
+
+**Canonified as:** Exemptions from numbering (00-CANON.md:78-82)
+
+---
+
+## 27. Producer-Before-Consumer Ordering
+
+**Git evidence:** `6d9380f Canonify README exemption and producer-before-consumer ordering`
+
+### Discovery
+Throughout session we consistently followed: canonify pattern (producer) → apply pattern (consumer).
+
+**Pattern observed:**
+1. Canonify stack ordering (canonic/) → Apply stack ordering (machine/)
+2. Canonify SOLUTIONS (canonic/) → Apply SOLUTIONS (machine/)
+3. Canonify WORKFLOWS (canonic/) → Apply WORKFLOWS (machine/)
+
+**Learning:** This was implicit discipline. Must be explicit constraint: always canonify FIRST (producer commit), then apply SECOND (consumer commit).
+
+**Prevents drift:** Cannot consume what isn't canonified yet. Ensures governance leads implementation.
+
+**Canonified as:** Producer-before-consumer ordering (00-CANON.md:232-237)
+
+---
+
+## 28. Introspection Depth Levels
+
+**Git evidence:** `d2c74f1 Canonify introspection depth levels meta-pattern`
+
+### Discovery
+This session demonstrated 3-level introspection recursion.
+
+**Depth levels:**
+1. Work level: SESSION_LEARNINGS.md violates governance purity
+2. Validator level: Validator uses blocklist instead of allowlist
+3. Architecture level: Validator itself violates governance purity (duplicate tool)
+
+**Learning:** Don't stop at surface violations. Ask "why wasn't this caught?" recursively until reaching architectural root cause.
+
+**Pattern:** Each level reveals deeper systemic issues. Continue until root cause is found and canonified.
+
+**Canonified as:** Introspection depth levels (00-CANON.md:194-196)
+
+---
+
+## 29. Allowlist vs Blocklist Validation
+
+**Git evidence:** `f5f4674 Canonify allowlist validation pattern`
+
+### Discovery
+Governance purity validator only checked for `.py` files (blocklist), missing SESSION_LEARNINGS.md.
+
+**Pattern comparison:**
+- Blocklist: Define prohibited items → gaps for unknown violations
+- Allowlist: Define permitted items → complete coverage
+
+**Learning:** Exhaustive constraints (purity, completeness) require allowlist validation to ensure no gaps.
+
+**Canonified as:** Validation completeness (00-CANON.md:207-222)
+
+---
+
+## 30. Tool Placement in Governance Purity
+
+**Git evidence:** `01db7c2 Canonify tool placement requirement`, `380b3d6 Fix governance purity violations`
+
+### Discovery
+validate_canonic.py in canonic/ violated governance purity by duplicating machine/tools/canonic_validator.py.
+
+**Irony:** The tool that checks governance purity violated governance purity.
+
+**Learning:** Governance repositories contain only governance definitions. Executable tools belong in implementation repositories.
+
+**Tool placement:**
+- canonic/: No executable tools (pure governance)
+- machine/tools/: Canonical tool implementations
+- Consumer repos: May implement own tools
+
+**Canonified as:** Tool placement (00-CANON.md:49-54)
+
+---
+
+## Summary: 2026-01-07 Session
+
+**Total learnings:** 10 distinct patterns discovered (21-30)
+**All canonified:** 100% captured in canonic/00-CANON.md
+**Key insight:** Compositional nomenclature makes system infinitely scalable
+
+**Session achievement:**
+- Governance purity restored
+- Stack ordering visualizes architecture
+- Nomenclature reads naturally: "canonic writing workflows"
+- Producer-before-consumer discipline now explicit
+
+**Pattern:** User questioning ("why is this here?") triggers introspection → discovery → canonification → stronger system.
+
+The system is vibing. 🔥
+
+---
+
