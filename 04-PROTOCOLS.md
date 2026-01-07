@@ -582,7 +582,7 @@ canonic_system: validation_protocol
 
 Protocols are atomic. Compose them for patterns.
 
-See SOLUTIONS.md for common compositions:
+See WORKFLOWS.md for common compositions:
 - registry_entity_pattern
 - ledger_pattern
 - fsm_state_pattern

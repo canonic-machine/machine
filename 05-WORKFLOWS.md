@@ -1,12 +1,12 @@
-# SOLUTIONS
+# WORKFLOWS
 
 Orchestrated protocol compositions for common use cases.
 
-Solutions combine atomic protocols from PROTOCOLS.md into reusable templates.
+Workflows combine atomic protocols from PROTOCOLS.md into reusable templates.
 
 ---
 
-## Solution Architecture
+## Workflow Architecture
 
 ```mermaid
 graph TB
@@ -19,11 +19,11 @@ graph TB
         reindex[reindex]
     end
 
-    subgraph Solutions[Orchestrated Solutions]
-        registry[registry_entity_solution]
-        ledger[ledger_solution]
-        fsm[fsm_state_solution]
-        reindexable[reindexable_artifact_solution]
+    subgraph Workflows[Orchestrated Workflows]
+        registry[registry_entity_workflow]
+        ledger[ledger_workflow]
+        fsm[fsm_state_workflow]
+        reindexable[reindexable_artifact_workflow]
     end
 
     immut --> registry
@@ -43,15 +43,15 @@ graph TB
     valid --> reindexable
 ```
 
-**Figure PT-1: Solutions compose atomic protocols for common scenarios.**
+**Figure PT-1: Workflows compose atomic protocols for common scenarios.**
 
-Each solution provides a ready-to-use template for specific artifact types.
+Each workflow provides a ready-to-use template for specific artifact types.
 
 ---
 
-## registry_entity_solution
+## registry_entity_workflow
 
-**Purpose:** Standard solution for ledger entries (assets, references, etc.)
+**Purpose:** Standard workflow for ledger entries (assets, references, etc.)
 
 **Composition:**
 
@@ -69,7 +69,7 @@ graph LR
     RP -.applies to.-> ENT[entity itself]
 ```
 
-**Figure PT-2: Registry entity solution ensures stable, traceable, protected entries.**
+**Figure PT-2: Registry entity workflow ensures stable, traceable, protected entries.**
 
 ---
 
@@ -96,7 +96,7 @@ graph LR
 ```markdown
 assets/CANON.md
 
-Asset entries use: registry_entity_solution
+Asset entries use: registry_entity_workflow
 
 Parameters:
 - id field: id
@@ -119,15 +119,15 @@ Parameters:
 
 ---
 
-## ledger_solution
+## ledger_workflow
 
-**Purpose:** Complete solution for registry files (LEDGER.md, indexes, catalogs)
+**Purpose:** Complete workflow for registry files (LEDGER.md, indexes, catalogs)
 
 **Composition:**
 
 ```mermaid
 graph TB
-    LP[ledger_solution] --> REP[registry_entity_solution]
+    LP[ledger_workflow] --> REP[registry_entity_workflow]
     LP --> SEQ[sequential_protocol]
     LP --> STR[structured_protocol]
     LP --> VAL[validation_protocol]
@@ -138,13 +138,13 @@ graph TB
     VAL --> File[Applies to: Ledger file]
 ```
 
-**Figure PT-3: Ledger solution adds sequencing and structure to registry entities.**
+**Figure PT-3: Ledger workflow adds sequencing and structure to registry entities.**
 
 ---
 
 ### Protocol Composition
 
-**Inherits:** `registry_entity_solution` for all entries
+**Inherits:** `registry_entity_workflow` for all entries
 
 **Adds:**
 1. `sequential_protocol`:
@@ -167,7 +167,7 @@ graph TB
 ```markdown
 assets/CANON.md
 
-LEDGER.md uses: ledger_solution
+LEDGER.md uses: ledger_workflow
 
 Entry structure:
 - id: asset-NNNN (sequential, starting 0001)
@@ -181,16 +181,16 @@ Entry structure:
 
 ### What It Guarantees
 
-✓ All guarantees from registry_entity_solution
+✓ All guarantees from registry_entity_workflow
 ✓ Sequential numbering (asset-0001, 0002, 0003...)
 ✓ Structured entries (required fields present)
 ✓ Continuous validation
 
 ---
 
-## fsm_state_solution
+## fsm_state_workflow
 
-**Purpose:** Solution for FSM state directories (episodes/, prose/, output/)
+**Purpose:** Workflow for FSM state directories (episodes/, prose/, output/)
 
 **Composition:**
 
@@ -213,7 +213,7 @@ stateDiagram-v2
     }
 ```
 
-**Figure PT-4: FSM state solution validates dependencies, mutations, and reindex status.**
+**Figure PT-4: FSM state workflow validates dependencies, mutations, and reindex status.**
 
 ---
 
@@ -244,7 +244,7 @@ stateDiagram-v2
 ```markdown
 prose/CANON.md
 
-Prose state uses: fsm_state_solution
+Prose state uses: fsm_state_workflow
 
 Dependencies:
 - ../assets/LEDGER.md (must exist)
@@ -271,7 +271,7 @@ Reindex: optional (for major rewrites)
 
 ---
 
-## reindexable_artifact_solution
+## reindexable_artifact_workflow
 
 **Purpose:** Artifacts that are normally immutable but can be reindexed
 
@@ -328,7 +328,7 @@ stateDiagram-v2
 ```markdown
 episodes/CANON.md
 
-Episodes use: reindexable_artifact_solution
+Episodes use: reindexable_artifact_workflow
 
 Immutability trigger: Assets extracted from episode
 
@@ -355,35 +355,35 @@ Validation:
 
 ---
 
-## Solution Selection Guide
+## Workflow Selection Guide
 
 ```mermaid
 graph TD
     Start{What are you governing?}
 
     Start -->|Ledger entries| Registry{Need full ledger?}
-    Registry -->|Yes| UseLedger[Use: ledger_solution]
-    Registry -->|No, just entries| UseRegistry[Use: registry_entity_solution]
+    Registry -->|Yes| UseLedger[Use: ledger_workflow]
+    Registry -->|No, just entries| UseRegistry[Use: registry_entity_workflow]
 
     Start -->|FSM state| StateType{What kind?}
-    StateType -->|Needs reindexing| UseReindex[Use: reindexable_artifact_solution]
-    StateType -->|Always mutable| UseFSM1[Use: fsm_state_solution<br/>mutation: always]
-    StateType -->|Immutable output| UseFSM2[Use: fsm_state_solution<br/>mutation: none]
+    StateType -->|Needs reindexing| UseReindex[Use: reindexable_artifact_workflow]
+    StateType -->|Always mutable| UseFSM1[Use: fsm_state_workflow<br/>mutation: always]
+    StateType -->|Immutable output| UseFSM2[Use: fsm_state_workflow<br/>mutation: none]
 
     Start -->|Custom| Manual[Compose atomic<br/>protocols manually]
 ```
 
-**Figure PT-6: Decision tree for selecting the right solution.**
+**Figure PT-6: Decision tree for selecting the right workflow.**
 
 ---
 
-## Extending Solutions
+## Extending Workflows
 
-Create new solutions by composing atomic protocols:
+Create new workflows by composing atomic protocols:
 
 ```markdown
-my_custom_solution:
-  = base_solution
+my_custom_workflow:
+  = base_workflow
   + additional_protocol_1
   + additional_protocol_2
   - removed_protocol (if overriding)
@@ -392,8 +392,8 @@ my_custom_solution:
 Example:
 
 ```markdown
-versioned_ledger_solution:
-  = ledger_solution
+versioned_ledger_workflow:
+  = ledger_workflow
   + version_protocol (track ledger versions)
   + snapshot_protocol (preserve history)
 ```
@@ -402,18 +402,18 @@ versioned_ledger_solution:
 
 ## AI Interprets, Humans Decide
 
-**AI interprets solutions:**
-- Recognizes solution names
+**AI interprets workflows:**
+- Recognizes workflow names
 - Applies composed protocols
 - Validates according to rules
 
-**Humans decide solutions:**
-- Which solution fits the use case
+**Humans decide workflows:**
+- Which workflow fits the use case
 - What parameters to provide
-- When to create custom solutions
+- When to create custom workflows
 
-Solutions make the AI's job easier while keeping humans in control.
+Workflows make the AI's job easier while keeping humans in control.
 
 ---
 
-End SOLUTIONS.
+End WORKFLOWS.
