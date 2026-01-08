@@ -80,6 +80,9 @@ The property that the system improves through git-based introspection cycles and
 ### domain application
 A repository that inherits from MACHINE and implements domain-specific validation and workflows. Examples: WRITING, DOCUMENTATION, RESEARCH.
 
+### fully synchronized
+The state where all repositories in a CANONIC system have the same governance understanding. Local commits match upstream, new canonifications are consumed, and no repositories are ahead or behind. Achieved through regular push/pull cycles and explicit consumption of canonified patterns. Contrast with drift where repositories have divergent governance states.
+
 ### governance repository
 A repository that defines canonical constraints without implementation. Must include examples directory. Only CANONIC is governance.
 
@@ -88,4 +91,4 @@ The layer that implements constraint checking, reference integrity, and git-base
 
 ---
 
-End of root DICTIONARY.
+End of root VOCAB.
