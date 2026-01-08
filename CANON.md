@@ -50,10 +50,10 @@ This CANON defines the domain-agnostic validation engine layer.
 - Update automatically when CANON changes
 - Do not hardcode file names or structural requirements
 
-**Violation:** Validator hardcodes constraints (e.g., checking for VOCABULARY.md when canon requires DICTIONARY.md)
+**Violation:** Validator hardcodes constraints (e.g., checking for VOCABULARY.md when canon requires VOCAB.md)
 
 ### Alphabetical ordering validation
-**DICTIONARY.md files must be validated for alphabetical term ordering.**
+**VOCAB.md files must be validated for alphabetical term ordering.**
 
 **Validation method:**
 - Extract term headers (### level headings)
@@ -61,7 +61,7 @@ This CANON defines the domain-agnostic validation engine layer.
 - Case-insensitive comparison
 - Syntactic check (free, fast)
 
-**Violation:** DICTIONARY.md terms not alphabetically ordered within sections
+**Violation:** VOCAB.md terms not alphabetically ordered within sections
 
 ---
 
