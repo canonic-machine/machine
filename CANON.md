@@ -12,7 +12,7 @@
 - CANON.md contains empty or orphaned section headers.
 ---
 
-# CANON (/)
+# CANON (/canonic/machine/)
 
 **Governance for the CANONIC validation engine.**
 

@@ -1,4 +1,4 @@
-# VOCAB (/)
+# VOCAB (/canonic/machine/)
 
 **Alphabetically ordered MACHINE-specific term definitions.**
 
