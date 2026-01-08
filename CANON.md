@@ -105,7 +105,7 @@ This CANON defines the domain-agnostic validation engine layer.
 3. Manual (USER) - Human-authored changes, governance decisions
 
 **Git metadata:**
-- AGENT commits include "Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
+- AGENT commits include Co-Authored-By with AGENT identity
 - USER commits use human author identity
 - Commit class detectable from message pattern and author metadata
 
