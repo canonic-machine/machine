@@ -294,6 +294,29 @@ Self-aware AGENT does not assume canonification authority.
 
 **Violation:** Creating artifacts not defined in CANON, editing artifacts before checking CANON constraints, assuming what README/FAQ/etc. should contain without CANON basis
 
+### AI/USER commit separation
+**AI must never commit on USER's behalf. USER commits their own work.**
+
+When USER performs work (external agent interaction, specification edits, etc.):
+1. AI documents the work in an episode
+2. AI leaves changes unstaged
+3. AI asks USER to commit with their own message
+
+**Proper workflow:**
+- USER does work → changes unstaged
+- AI creates episode documenting what happened
+- AI asks: "Please commit with your message"
+- USER commits with their own voice
+
+**Why this matters:**
+- Commits are signals of work done by the agent
+- Agentized git signals require commit to reflect actual agent
+- AI speaking for USER violates agent identity in git history
+
+**Violation:** AI committing USER's work with AI-constructed message. This violates agentized git signals because the commit speaks for USER when USER did the work.
+
+**Evidence:** Episode 047 documents AI repeatedly violating this constraint by committing USER's PAPER.md rebuild with AI-constructed messages.
+
 ---
 
 End of root CANON.
