@@ -1,4 +1,4 @@
-# DICTIONARY (Root)
+# VOCAB (machine/)
 
 **Alphabetically ordered MACHINE-specific term definitions.**
 
@@ -7,6 +7,9 @@ Inherits core CANONIC terms from canonic-machine/canonic.
 ---
 
 ## Validation Concepts
+
+### MACHINE
+Domain-agnostic validation engine layer in CANONIC architecture. Implements constraint checking, git-FSM, and self-* properties (self-validating, self-documenting, self-healing). Consumes CANONIC constitution and produces validation framework for domain applications.
 
 ### backflow
 Returning to an earlier state when validation fails. Only allowed on failure.
