@@ -37,6 +37,18 @@ This CANON defines the domain-agnostic validation engine layer.
 
 **Violation:** Validation engine contains domain-specific patterns or state structures
 
+### Stack ordering
+**Implementations form stacks by inheriting from each other.**
+
+**Stack order:**
+- Follows inheritance chain in order
+- MACHINE → WRITING → PAPER (example)
+- Each layer adds domain specificity while inheriting validation from layers above
+- Stack order appears in inheritance paths: `/canonic/machine/writing/paper/`
+- Paradigm (CANONIC) governs stacks but is not part of stack
+
+**Violation:** Wrong stack order (e.g., "WRITING MACHINE" instead of "MACHINE WRITING"), including paradigm (CANONIC) as part of implementation stack
+
 ---
 
 ## Validation Implementation
