@@ -49,7 +49,7 @@ class FSMStatus:
 
         prose_files = list(self.prose_dir.glob('*.md'))
         # Exclude triad files
-        prose_files = [f for f in prose_files if f.name not in ['CANON.md', 'VOCABULARY.md', 'README.md']]
+        prose_files = [f for f in prose_files if f.name not in ['CANON.md', 'VOCAB.md', 'DICTIONARY.md', 'README.md']]
         return len(prose_files)
 
     def count_output_files(self) -> int:
@@ -59,7 +59,7 @@ class FSMStatus:
 
         output_files = list(self.output_dir.glob('*.md'))
         # Exclude triad and metadata
-        output_files = [f for f in output_files if f.name not in ['CANON.md', 'VOCABULARY.md', 'README.md', 'METADATA.md']]
+        output_files = [f for f in output_files if f.name not in ['CANON.md', 'VOCAB.md', 'DICTIONARY.md', 'README.md', 'METADATA.md']]
         return len(output_files)
 
     def check_reindex(self) -> Optional[str]:

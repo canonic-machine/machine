@@ -20,7 +20,7 @@ This file defines agent behavior for the *machine* implementation framework. Fol
 
 ### Agent Artifact Management
 **Agents must:**
-- Update CANON.md and VOCABULARY.md files directly when constraints or terms change
+- Update CANON.md and VOCAB.md files directly when constraints or terms change
 - Generate README.md files automatically - never manually write README content
 - Maintain triad integrity across all FSM states
 
@@ -43,7 +43,7 @@ When you discover or implement FSM-specific fixes:
 - **State-specific constraint** → Add to state CANON (episodes/, assets/, prose/, output/)
 - **Reusable protocol** → Add to `PROTOCOLS.md`
 - **Pattern composition** → Add to `WORKFLOWS.md`
-- **New FSM term** → Add to `VOCABULARY.md`
+- **New FSM term** → Add to `VOCAB.md`
 
 **FSM-specific questions to ask:**
 1. Which state was affected?

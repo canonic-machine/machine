@@ -11,7 +11,7 @@
 ### Tool Triad Requirement
 **All tools must maintain the triad:**
 - CANON.md defines constraints and protocols
-- VOCABULARY.md defines terms used in governance
+- VOCAB.md defines terms used in governance
 - README.md provides human-readable documentation
 
 **Violation:** Tool directory missing any triad file
@@ -156,7 +156,7 @@
 ## Tool Lifecycle
 
 ### Development Phase
-- **Create triad files** (CANON, VOCABULARY, README)
+- **Create triad files** (CANON, VOCAB, README)
 - **Implement protocol compliance**
 - **Add comprehensive tests**
 - **Validate against machine CANON**
@@ -231,7 +231,7 @@
 
 ### Documentation Completeness
 - README.md covers all tool usage
-- VOCABULARY.md defines all technical terms
+- VOCAB.md defines all technical terms
 - CANON.md constraints are testable
 
 **Violation:** Tool documentation incomplete or untestable
@@ -239,4 +239,3 @@
 ---
 
 End of tools CANON.
-

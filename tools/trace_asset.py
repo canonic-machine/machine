@@ -86,7 +86,7 @@ class AssetTracer:
 
         for prose_file in self.prose_dir.glob('*.md'):
             # Skip triad files
-            if prose_file.name in ['CANON.md', 'VOCABULARY.md', 'README.md']:
+            if prose_file.name in ['CANON.md', 'VOCAB.md', 'DICTIONARY.md', 'README.md']:
                 continue
 
             content = prose_file.read_text()
@@ -105,7 +105,7 @@ class AssetTracer:
 
         for output_file in self.output_dir.glob('*.md'):
             # Skip triad and metadata files
-            if output_file.name in ['CANON.md', 'VOCABULARY.md', 'README.md', 'METADATA.md']:
+            if output_file.name in ['CANON.md', 'VOCAB.md', 'DICTIONARY.md', 'README.md', 'METADATA.md']:
                 continue
 
             content = output_file.read_text()

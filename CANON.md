@@ -62,7 +62,7 @@ This CANON defines the domain-agnostic validation engine layer.
 - Update automatically when CANON changes
 - Do not hardcode file names or structural requirements
 
-**Violation:** Validator hardcodes constraints (e.g., checking for VOCABULARY.md when canon requires VOCAB.md)
+**Violation:** Validator hardcodes constraints (e.g., checking for VOCAB.md instead of honoring CANON-driven structure)
 
 ### Alphabetical ordering validation
 **VOCAB.md files must be validated for alphabetical term ordering.**

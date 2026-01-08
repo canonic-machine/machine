@@ -464,24 +464,24 @@ Protocols for system governance and documentation.
 
 **Parameters:**
 - source_canon: path to CANON.md
-- source_vocabulary: path to VOCABULARY.md
+- source_vocabulary: path to VOCAB.md
 - target_readme: path to README.md
 
 **Generation Requirements:**
 - Title must match repository purpose from CANON context
-- Tagline must summarize core paradigm from VOCABULARY.md
+- Tagline must summarize core paradigm from VOCAB.md
 - Quick Start lists: specification file, examples, related projects
 - Core Idea explains paradigm vs traditional programming
 - Triad Section shows file purposes with examples
 - Why This Matters explains paradigm benefits
-- Core Concepts defines all terms from VOCABULARY.md
+- Core Concepts defines all terms from VOCAB.md
 - Examples references all example directories
 - Repository Structure reflects actual directory contents
 - How to Use provides learning path
 - Applications lists use cases from paradigm scope
 
 **Validation Rules:**
-- All content must derive from CANON.md + VOCABULARY.md
+- All content must derive from CANON.md + VOCAB.md
 - No invented content or external references
 - Must be automatically generatable
 - Must remain synchronized with governance changes
@@ -496,7 +496,7 @@ Protocols for system governance and documentation.
 ```
 repository: documentation_protocol
   source_canon: CANON.md
-  source_vocabulary: VOCABULARY.md
+  source_vocabulary: VOCAB.md
   target_readme: README.md
 ```
 

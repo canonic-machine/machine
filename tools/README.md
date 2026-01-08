@@ -167,7 +167,7 @@ fi
 ### Adding New Tools
 
 1. Create tool module in `tools/`
-2. Add triad files (CANON.md, VOCABULARY.md, README.md)
+2. Add triad files (CANON.md, VOCAB.md, README.md)
 3. Implement required protocols
 4. Add comprehensive tests
 5. Update this README.md
@@ -204,7 +204,7 @@ tools/
 ├── extract_assets.py      # Episode → Asset transition
 ├── compose_prose.py       # Asset → Prose transition
 ├── CANON.md              # Tool governance
-├── VOCABULARY.md         # Technical terms
+├── VOCAB.md               # Technical terms
 └── README.md             # This file
 ```
 
@@ -225,7 +225,7 @@ pip install -r requirements.txt
 
 This tooling ecosystem is itself CANONIC:
 
-- **Triad maintained**: CANON.md, VOCABULARY.md, README.md
+- **Triad maintained**: CANON.md, VOCAB.md, README.md
 - **Protocol compliant**: All declared protocols implemented
 - **Self-validating**: Tools validate their own operation
 - **FSM-aware**: Context-aware operation within machine states

@@ -14,7 +14,7 @@ These learnings should be canonified into future CANON constraints.
 **Example:** tools/CANON.md had TODO list content after "End of tools CANON."
 
 **Learning:** Syntactic validation must check:
-- No content after "End of [name] CANON." or "End of [name] VOCABULARY."
+- No content after "End of [name] CANON." or "End of [name] VOCAB."
 - File must terminate cleanly
 - Any content after termination marker is a violation
 
@@ -23,9 +23,9 @@ These learnings should be canonified into future CANON constraints.
 **Canonify as:** 
 ```
 ### File termination
-**CANON.md and VOCABULARY.md files must terminate after end marker.**
+**CANON.md and VOCAB.md files must terminate after end marker.**
 - No content allowed after "End of [name] CANON."
-- No content allowed after "End of [name] VOCABULARY." 
+- No content allowed after "End of [name] VOCAB." 
 - Blank lines after termination marker are allowed
 
 **Violation:** Content exists after file termination marker
@@ -208,7 +208,7 @@ if not self.validate_self():
 - Clear producer vs consumer signal
 - Better code review
 
-**Already Canonical:** This is in VOCABULARY.md as "atomic commit".
+**Already Canonical:** This is in VOCAB.md as "atomic commit".
 
 ---
 
@@ -407,7 +407,7 @@ if not self.validate_self():
 ## Summary: Meta-Pattern Session
 
 **New Learnings:** 6 meta-patterns discovered from git history analysis
-**All Canonified:** All 6 integrated into CANON.md introspection requirement and VOCABULARY.md
+**All Canonified:** All 6 integrated into CANON.md introspection requirement and VOCAB.md
 **Achievement:** Pattern discovery requirement is now mandatory - the system must analyze its own evolution
 
 **Meta-Achievement:** By canonifying the requirement to find meta-patterns, we've created **recursive self-awareness**. The system now requires itself to:
@@ -444,7 +444,7 @@ for py_file in self.root.rglob('*.py'):
 ```
 
 **CANON.md Definition (canonic/CANON.md - Abstraction layers invariant):**
-> Pure governance repositories contain only: repository specification file, CANON.md, DICTIONARY.md, README.md, and examples.
+> Pure governance repositories contain only: repository specification file, CANON.md, VOCAB.md, README.md, and examples.
 
 This is an **allowlist constraint**, not a blocklist constraint.
 
@@ -466,7 +466,7 @@ This is an **allowlist constraint**, not a blocklist constraint.
 ```python
 # Allowlist approach - exhaustive checking
 allowed_root_files = {
-    'CANONIC.md', 'CANON.md', 'VOCABULARY.md',
+    'CANONIC.md', 'CANON.md', 'VOCAB.md',
     'README.md', '.gitignore', 'validate_canonic.py'
 }
 
@@ -632,8 +632,8 @@ The system validated itself, found itself wanting, and corrected itself.
 SESSION_LEARNINGS.md violated implicit naming pattern observed across all governance files.
 
 **Pattern observed:**
-- canonic/: CANONIC.md, CANON.md, VOCABULARY.md, README.md
-- machine/: MACHINE.md, CANON.md, VOCABULARY.md, AGENTS.md, PATTERNS.md, PROTOCOLS.md
+- canonic/: CANONIC.md, CANON.md, VOCAB.md, README.md
+- machine/: MACHINE.md, CANON.md, VOCAB.md, AGENTS.md, PATTERNS.md, PROTOCOLS.md
 - Violation: SESSION_LEARNINGS.md (compound name with underscore)
 
 **Learning:** Governance files use single-word UPPERCASE plural nouns (lists of things).
@@ -651,7 +651,7 @@ Machine repository has natural dependency stack that should be visible in file o
 
 **Architectural stack:**
 - CANON defines constraints (foundation/truth)
-- VOCABULARY defines terms (language)
+- VOCAB defines terms (language)
 - MACHINE defines FSM spec (architecture)
 - AGENTS execute spec
 - PROTOCOLS are atomic operations
@@ -834,22 +834,22 @@ validate_canonic.py in canonic/ violated governance purity by duplicating machin
 **Git evidence:** `9048e92 Canonify triad primitives always unnumbered`, `544cc45 Apply triad primitives always unnumbered pattern`
 
 ### Discovery
-Stack ordering pattern (00-CANON, 01-VOCABULARY, 02-SPEC) conflated two distinct concepts:
-1. **Primitive governance files** (CANON, VOCABULARY, README) - the minimal triad
+Stack ordering pattern (00-CANON, 01-VOCAB, 02-SPEC) conflated two distinct concepts:
+1. **Primitive governance files** (CANON, VOCAB, README) - the minimal triad
 2. **Architectural layers** (SPEC, implementation files) - the numbered stack
 
-**Confusion:** Are CANON/VOCABULARY/README hierarchical layers or equivalent primitives?
+**Confusion:** Are CANON/VOCAB/README hierarchical layers or equivalent primitives?
 
 ### Canonical Pattern
 **Triad files are equivalent primitives, always unnumbered:**
 - CANON.md: Governance constraints
-- VOCABULARY.md: Terminology definitions
+- VOCAB.md: Terminology definitions
 - README.md: Human-readable entry point
 
 **These three form the complete self-describing foundation.**
 
 **Stack ordering applies to layers built ON TOP of the triad:**
-- Triad: CANON.md + VOCABULARY.md + README.md (unnumbered primitives)
+- Triad: CANON.md + VOCAB.md + README.md (unnumbered primitives)
 - Spec layer: 00-MACHINE.md (defines the architecture)
 - Implementation layers: 01-AGENTS.md, 02-PROTOCOLS.md, 03-WORKFLOWS.md, 04-LEARNINGS.md
 
@@ -857,7 +857,7 @@ Stack ordering pattern (00-CANON, 01-VOCABULARY, 02-SPEC) conflated two distinct
 ```
 Before:                      After:
 00-CANON.md         →       CANON.md (primitive)
-01-VOCABULARY.md    →       VOCABULARY.md (primitive)
+01-VOCAB.md         →       VOCAB.md (primitive)
 README.md           →       README.md (primitive)
 02-MACHINE.md       →       00-MACHINE.md (spec layer)
 03-AGENTS.md        →       01-AGENTS.md (layer 1)
@@ -982,27 +982,27 @@ The machine is self-sustaining! 🔥
 ## Terminology Purge After Abstraction Separation
 
 ### Discovery
-**Issue:** After moving domain-specific concepts (FSM with Episode→Asset→Prose→Output states) from MACHINE to WRITING, residual terminology remained in MACHINE's DICTIONARY.md.
+**Issue:** After moving domain-specific concepts (FSM with Episode→Asset→Prose→Output states) from MACHINE to WRITING, residual terminology remained in MACHINE's VOCAB.md (formerly DICTIONARY.md).
 
 **Root cause:**
 - Abstraction separation removed implementation artifacts (examples/, domain-specific tools)
-- But terminology definitions in DICTIONARY.md were not purged
+- But terminology definitions in VOCAB.md were not purged
 - This created **semantic leakage** - MACHINE claimed to be domain-agnostic while defining domain terms
 
 **Example violations found:**
-- DICTIONARY.md contained "FSM" section defining finite state machines
+- VOCAB.md contained "FSM" section defining finite state machines
 - "state" and "state transition" defined as FSM concepts
 - "git-FSM" term used (FSM is domain-specific, git is domain-agnostic)
 - "domain application" described as "implements domain-specific FSM"
 
 **Why validator missed it:**
 - Syntactic validation checks file structure, not semantic consistency
-- No validation rule: "Terms in DICTIONARY must not reference abstracted-away concepts"
+- No validation rule: "Terms in VOCAB must not reference abstracted-away concepts"
 - Validator bug: regex pattern `(?=###|\Z)` matched `### level headings` in content, causing false positive
 
 **Learning:** Abstraction separation requires **three-layer purge**:
 1. Remove implementation artifacts (files, directories)
-2. Remove terminology definitions (DICTIONARY.md entries)
+2. Remove terminology definitions (VOCAB.md entries)
 3. Remove conceptual references (documentation mentions)
 
 **Impact:** MACHINE appeared compliant structurally but violated domain-agnostic constraint semantically.
@@ -1015,14 +1015,14 @@ The machine is self-sustaining! 🔥
 
 **Purge checklist:**
 1. Implementation artifacts removed (examples/, tools/, code)
-2. DICTIONARY.md entries removed (terms referencing abstracted concepts)
+2. VOCAB.md entries removed (terms referencing abstracted concepts)
 3. CANON.md constraints reviewed (no references to abstracted patterns)
 4. README.md updated (no descriptions of abstracted functionality)
 5. Cross-references validated (no broken links to removed content)
 
 **Example:** Moving FSM from MACHINE to WRITING requires:
 - Remove FSM examples from machine/
-- Remove "FSM", "state", "state transition" from machine/DICTIONARY.md
+- Remove "FSM", "state", "state transition" from machine/VOCAB.md
 - Update machine/CANON.md to not reference FSM patterns
 - Update machine/README.md to describe git-based validation, not FSM validation
 
@@ -1034,17 +1034,17 @@ The machine is self-sustaining! 🔥
 ## Atomic Commit Enforcement
 
 ### Discovery
-**Issue:** Attempted to commit validator fix + DICTIONARY.md purge + learning canonification in single commit. This violated atomicity constraint.
+**Issue:** Attempted to commit validator fix + VOCAB.md purge + learning canonification in single commit. This violated atomicity constraint.
 
 **Why it's wrong:**
 - Validator fix addresses one constraint (regex parsing bug)
-- DICTIONARY purge addresses different constraint (domain purity)
+- VOCAB purge addresses different constraint (domain purity)
 - Learning canonification is producer commit (discovery)
 - Batching makes git history unreadable and violates single logical change rule
 
 **Correct approach:**
 1. Commit validator fix: "Fix constraint parsing regex..."
-2. Commit DICTIONARY fix: "Fix domain purity violation..."
+2. Commit VOCAB fix: "Fix domain purity violation..."
 3. Commit learning: "Canonify terminology purge requirement..."
 
 Each commit addresses exactly one constraint or captures one discovery.
@@ -1147,7 +1147,7 @@ Each commit addresses exactly one constraint or captures one discovery.
 **Meta-pattern:** The process of discovering and canonifying patterns is itself a pattern that should be canonified.
 
 **Observed cycle:**
-1. Work reveals gap (FSM terminology in DICTIONARY.md)
+1. Work reveals gap (FSM terminology in VOCAB.md)
 2. Introspection asks "why wasn't this caught?" (validator limitation)
 3. Learning captured (terminology purge after abstraction)
 4. Pattern canonified (three-layer purge requirement)
@@ -1308,18 +1308,18 @@ User commits (Human designs):
 **Meta-pattern:** Producer/Consumer/User forms a **triad** - the same three-part structure that appears throughout CANONIC.
 
 **The pattern of triads:**
-1. **Governance triad:** CANON.md / DICTIONARY.md / README.md
+1. **Governance triad:** CANON.md / VOCAB.md / README.md
 2. **Layer triad:** CANONIC / MACHINE / DOMAIN
 3. **Commit triad:** Producer / Consumer / User
 
 **Why triads:**
-- CANON/DICTIONARY/README: Constraints + Terms + Narrative
+- CANON/VOCAB/README: Constraints + Terms + Narrative
 - CANONIC/MACHINE/DOMAIN: Paradigm + Engine + Application
 - Producer/Consumer/User: Discovery + Enforcement + Design
 
 **Structural similarity:**
 ```
-Governance:  CANON.md        DICTIONARY.md       README.md
+Governance:  CANON.md        VOCAB.md            README.md
             (constraints)    (terminology)       (narrative)
 
 Architecture: CANONIC         MACHINE            DOMAIN
@@ -1336,7 +1336,7 @@ Commits:     Producer        Consumer            User
 
 **Why three parts work:**
 1. Foundation (CANON, CANONIC, Producer)
-2. Implementation (DICTIONARY, MACHINE, Consumer)
+2. Implementation (VOCAB, MACHINE, Consumer)
 3. Interface (README, DOMAIN, User)
 
 **Recognition:** The commit classification (Producer/Consumer/User) isn't arbitrary - it follows the canonical triad pattern. This is a **structural meta-pattern**.
@@ -1348,7 +1348,7 @@ Commits:     Producer        Consumer            User
 **CANONIC uses triads as fundamental compositional unit.**
 
 **Observed triads:**
-- Governance: CANON.md / DICTIONARY.md / README.md
+- Governance: CANON.md / VOCAB.md / README.md
 - Architecture: CANONIC / MACHINE / DOMAIN
 - Commits: Producer / Consumer / User
 - Validation: Syntactic / Semantic / Reference Integrity

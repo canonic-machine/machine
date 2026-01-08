@@ -130,27 +130,27 @@ See [00-MACHINE.md](00-MACHINE.md) for complete FSM definition.
 project/
 ├── episodes/          # Raw input
 │   ├── CANON.md
-│   ├── VOCABULARY.md
+│   ├── VOCAB.md
 │   ├── README.md
 │   └── 001-*.md
 ├── assets/            # Registered entities
 │   ├── CANON.md
-│   ├── VOCABULARY.md
+│   ├── VOCAB.md
 │   ├── README.md
 │   └── LEDGER.md
 ├── prose/             # Composed content
 │   ├── CANON.md
-│   ├── VOCABULARY.md
+│   ├── VOCAB.md
 │   ├── README.md
 │   └── draft.md
 └── output/            # Validated artifacts
     ├── CANON.md
-    ├── VOCABULARY.md
+    ├── VOCAB.md
     ├── README.md
     └── METADATA.md
 ```
 
-Each directory has the triad (CANON, VOCABULARY, README). Each state has constraints.
+Each directory has the triad (CANON, VOCAB, README). Each state has constraints.
 
 ---
 
@@ -242,11 +242,11 @@ This implementation repository is in **active learning phase** (52.5% producer r
 **Recent discoveries (see [04-LEARNINGS.md](04-LEARNINGS.md)):**
 
 ### File Organization Pattern
-The triad (CANON, VOCABULARY, README) are unnumbered primitives that form the self-describing foundation. Numbered stack layers (00-SPEC, 01+) build on top of this foundation:
+The triad (CANON, VOCAB, README) are unnumbered primitives that form the self-describing foundation. Numbered stack layers (00-SPEC, 01+) build on top of this foundation:
 
 ```
 CANON.md           (primitive: governance constraints)
-VOCABULARY.md      (primitive: terminology)
+VOCAB.md           (primitive: terminology)
 README.md          (primitive: human entry point)
 00-MACHINE.md      (spec: FSM architecture definition)
 01-AGENTS.md       (layer: agent patterns)

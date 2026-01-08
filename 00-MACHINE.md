@@ -179,7 +179,7 @@ Traditional validators fail when governance evolves:
 
 ```
 # Hardcoded (wrong)
-check_file_exists("VOCABULARY.md")
+check_file_exists("VOCAB.md")
 
 # Canon-aware (correct)
 triad_files = parse_canon_triad_requirement()

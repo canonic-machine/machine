@@ -62,10 +62,23 @@ class SyntacticValidator:
     Fast, cheap validation of form over function.
     Checks file existence, naming, structure, format.
     """
+    VOCAB_FILE_NAMES = ["VOCAB.md", "DICTIONARY.md"]
 
     def __init__(self, root: Path):
         self.root = root
         self.violations: List[Violation] = []
+
+    def _iter_vocab_files(self):
+        for name in self.VOCAB_FILE_NAMES:
+            for path in self.root.rglob(name):
+                yield path
+
+    def _find_vocab_file(self, directory: Path) -> Optional[Path]:
+        for name in self.VOCAB_FILE_NAMES:
+            candidate = directory / name
+            if candidate.exists():
+                return candidate
+        return None
 
     def validate_all(self) -> List[Violation]:
         """Run all syntactic validations."""
@@ -699,7 +712,7 @@ NOT technical terms:
 CANON content:
 {canon_content}
 
-VOCABULARY content:
+VOCAB content:
 {vocab_content}
 
 Return ONLY valid JSON (no markdown):
@@ -881,7 +894,7 @@ Return ONLY valid JSON (no markdown):
 
     def validate_terminology_basic(self) -> None:
         """Basic terminology check without LLM (fallback)."""
-        # Simple check: terms in CANON should exist in VOCABULARY
+        # Simple check: terms in CANON should exist in VOCAB (or legacy DICTIONARY)
         for canon_file in self.root.rglob("CANON.md"):
             vocab_file = canon_file.parent / "DICTIONARY.md"
             if not vocab_file.exists():
