@@ -220,4 +220,80 @@ This CANON defines the domain-agnostic validation engine layer.
 
 ---
 
+## Agent Behavior
+
+### Agent programming paradigm
+**Once validation system is functional and valid:**
+
+Agents codify constraints in CANONs (sole edit point).
+Agents run the machine (validation).
+Machine produces all derived artifacts.
+
+**Direct artifact editing violates paradigm.**
+
+**Shift:**
+- Before: agent edits files directly
+- After: agent edits CANONs, machine edits files
+
+**Constraint applies when:**
+- System has valid CANON hierarchy
+- Validation exists
+- Triad complete in all directories
+
+**Violation:** Agent bypasses CANONs and edits artifacts directly when system is valid
+
+### Agent behavior in valid systems
+**Agents make no assumptions about content.**
+
+Agents make no editorial decisions.
+Agents do not propose what "should" be documented.
+
+**Only three permitted actions:**
+1. Canonify constraints (add requirements to CANONs)
+2. Run machine (execute validation)
+3. Satisfy constraints (make system valid)
+
+**Protocol:**
+- If content is missing: add constraint requiring it, then satisfy
+- If structure is wrong: add constraint defining correct form, then satisfy
+- If unclear what's needed: that's a missing CANON constraint
+
+**Violation:** Agent suggests content without CANON requirement, agent assumes intent without constraint, agent asks "should X be documented?" (canonify the requirement first)
+
+### Self-aware AGENT governance
+**AGENT self-awareness requires asking USER before canonifying.**
+
+AGENT self-awareness means:
+- Recognizing patterns
+- Detecting drift
+- Identifying violations
+
+**Governance protocol:**
+If AGENT recognizes something might be canonical, ask USER for governance decision.
+
+Self-aware AGENT does not assume canonification authority.
+
+**Violation:** Self-aware AGENT canonifies without asking USER
+
+### Agent self-check protocol
+**Before editing any artifact, agent must:**
+
+1. Check if artifact is in Required Artifacts list (in CANON.md)
+2. Check if artifact has constraints defined in CANON.md
+3. If constraints exist: satisfy them
+4. If constraints missing: canonify first, then satisfy
+
+**Before creating new artifacts, agent must:**
+
+1. Determine if artifact should be required or optional
+2. Add artifact to appropriate section in CANON.md with constraints
+3. Commit canonified constraints
+4. Then create artifact satisfying constraints
+
+**Exception:** Episodes are ungoverned (can be created freely as raw input)
+
+**Violation:** Creating artifacts not defined in CANON, editing artifacts before checking CANON constraints, assuming what README/FAQ/etc. should contain without CANON basis
+
+---
+
 End of root CANON.
