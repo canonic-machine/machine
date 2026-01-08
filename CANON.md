@@ -92,6 +92,31 @@ This CANON defines the domain-agnostic validation engine layer.
 
 **Violation:** Non-atomic commits or commits without validation gates
 
+### Git user classes
+**GIT machine has two user classes with distinct commit patterns.**
+
+**User classes:**
+- AGENT (automated) - LLM executing governance
+- USER (human) - Manual governance decisions
+
+**Commit classes:**
+1. Producer (AGENT) - "Canonify [learning]" - discovers constraints
+2. Consumer (AGENT) - "Apply [constraint]" / "Fix [violation]" - enforces constraints
+3. Manual (USER) - Human-authored changes, governance decisions
+
+**Git metadata:**
+- AGENT commits include "Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
+- USER commits use human author identity
+- Commit class detectable from message pattern and author metadata
+
+**Collaboration model:**
+- USER canonifies intent (manual commits to CANON)
+- AGENT applies constraints (automated commits to artifacts)
+- Mixed workflows: human governance + AI execution
+- Git history shows governance evolution through commit class distribution
+
+**Violation:** AGENT commits without identity metadata, ambiguous commit patterns that obscure user class
+
 ### Self-healing implementation
 **System detects violations through git history patterns.**
 
