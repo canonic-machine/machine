@@ -1,14 +1,9 @@
-# VOCAB Template
-
-This vocabulary explains the CANON template. Define the terms used by CANON, SPEC, README, and this VOCAB. Add additional terms for any extra axioms.
-
-```
 # VOCAB (/)
 
 ## Core terms
 
 ### CANON
-<define the constraints artifact for a scope>
+<define the axioms artifact for a scope>
 
 ### inheritance
 <define how a CANON links to a parent scope and how chains terminate>
@@ -20,16 +15,13 @@ This vocabulary explains the CANON template. Define the terms used by CANON, SPE
 <define the required governance file set: CANON.md, VOCAB.md, README.md>
 
 ### introspection
-<describe how this VOCAB defines itself and the CANON, SPEC, and README it supports>
-
-### SPEC
-<define the declarative artifact that is the first source of truth>
+<describe how this VOCAB defines itself and the CANON it supports>
 
 ### README
-<define the narrative artifact that explains a scope>
+<define the README artifact for a scope>
 
 ### VOCAB
-<define this vocabulary artifact itself—its responsibility to define terms for CANON, SPEC, and README>
+<define this vocabulary artifact itself>
 
 ### scope
 <define the area governed by a CANON and its triad>
@@ -44,7 +36,7 @@ This vocabulary explains the CANON template. Define the terms used by CANON, SPE
 <define the reusable blueprint for instantiating governance artifacts>
 
 ### define
-<define how terms or rules are stated in VOCAB, CANON, or SPEC>
+<define how terms are stated in VOCAB>
 
 ## Additional terms
 
@@ -52,4 +44,3 @@ This vocabulary explains the CANON template. Define the terms used by CANON, SPE
 <define any other term used by scope-specific axioms>
 
 End of VOCAB.
-```

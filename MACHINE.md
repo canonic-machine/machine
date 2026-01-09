@@ -1,7 +1,7 @@
 # MACHINE Spec
 
 1. Purpose
-   - Enforce CANONIC axioms and machine axioms through evaluation.
+   - Enforce CANONIC and MACHINE axioms through protocols.
 
 2. Scope
    - Applies to `/machine` and informs inherited scopes.
@@ -11,7 +11,8 @@
    - Evaluate the structure against the specification.
    - Produce a binary decision and a non-authoritative signal.
    - Ensure determinism: identical inputs produce identical outcomes.
-   - Enforce inherited CANONIC axioms: triad, inheritance, introspection.
+   - Protocols in `/machine/protocols` are CANONIC and enforce CANONIC axioms, CANONIC SPEC constraints, and machine axioms.
+   - Protocols accept input and yield a decision and a signal.
    - Enforce coherence, compliance, governance, and invalidity for machine scopes.
    - Enforce documentation and nomenclature.
    - Enforce minimal canon, ordering, and templating.
@@ -22,6 +23,8 @@
    - Confirm evaluation yields a binary decision and signal.
    - Confirm signal is derived from evaluation and is not authoritative.
    - Confirm determinism for identical inputs.
+   - Confirm `/machine/protocols` includes CANONIC protocols that enforce CANONIC axioms, CANONIC SPEC constraints, and machine axioms.
+   - Confirm protocols accept input and yield a decision and a signal.
    - Confirm triad presence and inheritance declarations.
    - Confirm VOCAB defines every term used by CANON, SPEC, README, and itself.
    - Validate coherence and compliance; derive governance and invalidity from those results.

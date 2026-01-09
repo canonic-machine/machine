@@ -18,3 +18,7 @@ axioms:
 
 5. determinism:
    identical inputs produce identical outcomes
+
+6. protocols:
+   a machine hosts CANONIC protocols that enforce CANONIC axioms, CANONIC SPEC constraints, and machine axioms
+   protocols accept input and yield a decision and a signal

@@ -1,13 +1,17 @@
-# README Template
-
-```
 # <NAME>
 
-This repository carries the triad of governance files.
+<One-line description of the scope.>
 
-- `CANON.md` defines the constitution for this scope.
-- `VOCAB.md` defines the terms used by this scope.
-- `README.md` (this file) describes the scope purpose and relation of CANON, SPEC, and VOCAB.
+## Purpose
+- <Why this scope exists.>
 
-The machine enforces this scope downstream.
-```
+## Scope
+- <What this scope covers and does not cover.>
+
+## Inheritance
+- <Parent scope path>
+
+## References
+- <SPEC file, if present>
+- CANON.md
+- VOCAB.md
