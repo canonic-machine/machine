@@ -1,94 +1,41 @@
-# VOCAB (/canonic/machine/)
+# VOCAB (/machine)
 
-**Alphabetically ordered MACHINE-specific term definitions.**
+## Core terms
 
-Inherits core CANONIC terms from canonic-machine/canonic.
-
----
-
-## Validation Concepts
-
-### MACHINE
-Domain-agnostic validation engine layer in CANONIC architecture. Implements constraint checking, git-FSM, and self-* properties (self-validating, self-documenting, self-healing). Consumes CANONIC constitution and produces validation framework for domain applications.
-
-### backflow
-Returning to an earlier state when validation fails. Only allowed on failure.
-
-### canon-awareness
-The property that validators derive rules from CANON.md dynamically rather than hardcoding constraints.
+### CANON
+The constraints artifact for the machine scope, inheriting the root CANON.
 
 ### compliance
-State of passing all validation checks.
+The property that the triad exists and inheritance is declared for the machine scope.
 
-### constraint checking
-The process of verifying that artifacts satisfy requirements defined in CANON.md.
+### coherence
+The property that machine CANON statements do not contradict inherited CANON.
 
-### reference integrity
-Verifying that all references resolve correctly across the artifact tree.
+### correction
+History-preserving change executed by the machine layer to restore governed states.
 
-### semantic validation
-LLM-powered deep validation checking coherence, completeness, and canon alignment.
+### governance
+The state where coherence and compliance both hold.
 
-### syntactic validation
-Fast, deterministic validation checking structure, format, and naming conventions.
+### inheritance
+The declared linkage from the machine scope to the scope it inherits from.
 
-### validation gate
-A pass/fail check that determines if transition to next state is allowed.
+### introspection
+The requirement that VOCAB defines itself and the CANON it supports.
 
-### violation
-A failed validation check that blocks transition to next state.
+### invalidity
+The state of not being governed.
 
----
+### machine
+The validation engine layer responsible for correction and ordering checks.
 
-## Git Commit Concepts
+### ordering
+The machine function that enforces required ordering (e.g., alphabetical VOCAB terms).
 
-### atomic commit
-A git commit containing one logical change addressing one constraint.
+### triad
+The required set of governance artifacts: CANON.md, VOCAB.md, README.md.
 
-### consumer commit
-A commit that applies canonical constraints or fixes violations. Uses "Apply" or "Fix" prefix.
+### VOCAB
+The meanings artifact for a scope; it defines the terms used by CANON and defines itself.
 
-### producer commit
-A commit that canonifies new patterns or constraints. Uses "Canonify" prefix.
-
-### producer ratio
-The percentage of commits that are producer (canonification) vs consumer (application). Indicates system maturity phase.
-
-### session
-A logical unit of work bounded by git push to origin. Contains atomic commits addressing constraints and canonifying patterns.
-
-### user commit
-A commit capturing human design decisions. Preserves human authorship, distinct from producer/consumer LLM commits.
-
----
-
-## Self-Properties
-
-### self-healing
-The property that the system detects violations through git history patterns and triggers recovery.
-
-### self-measuring
-The property that the system measures its own maturity through git commit analysis.
-
-### self-strengthening
-The property that the system improves through git-based introspection cycles and recursive canonification.
-
----
-
-## Repository Concepts
-
-### domain application
-A repository that inherits from MACHINE and implements domain-specific validation and workflows. Examples: WRITING, DOCUMENTATION, RESEARCH.
-
-### fully synchronized
-The state where all repositories in a CANONIC system have the same governance understanding. Local commits match upstream, new canonifications are consumed, and no repositories are ahead or behind. Achieved through regular push/pull cycles and explicit consumption of canonified patterns. Contrast with drift where repositories have divergent governance states.
-
-### governance repository
-A repository that defines canonical constraints without implementation. Must include examples directory. Only CANONIC is governance.
-
-### validation engine
-The layer that implements constraint checking, reference integrity, and git-based validation infrastructure without domain-specific patterns.
-
----
-
-End of root VOCAB.
+End of VOCAB.
