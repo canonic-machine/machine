@@ -4,7 +4,7 @@
    - Define the template function for this scope.
 
 2. Scope
-   - Applies to `/machine/templates` and informs inherited scopes.
+   - Applies to `/canonic/templates` and informs inherited scopes.
 
 3. Constraints
    - Templates provide structure for CANON, VOCAB, README, and SPEC.
