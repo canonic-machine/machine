@@ -32,3 +32,6 @@ axioms:
 
 9. ordering:
    machine validation enforces required ordering (e.g., alphabetical VOCAB terms)
+
+10. templating:
+   machine hosts and applies canonical templates for CANON, VOCAB, README, and SPEC

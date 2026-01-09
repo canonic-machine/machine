@@ -2,17 +2,38 @@
 
 Use this blueprint for any CANON scope. Replace placeholders with statements specific to the scope you are governing. For the root CANON, set `<NAME>` to the repository name and keep `inherits: /`. Inherited axioms are final. Machine scopes extend the base axioms with correction and ordering.
 
-```mermaid
-graph TD
-    A["{{NAME}} ({{scope path}})"] --> C["inherits: {{parent scope path}}"]
-    C --> D["axioms"]
-    D --> D1["1. triad: {{description}}"]
-    D --> D2["2. inheritance: {{parent link explanation, inherited axioms are final}}"]
-    D --> D3["3. coherence: {{semantic expectations}}"]
-    D --> D4["4. compliance: {{structural requirements}}"]
-    D --> D5["5. governance: {{coherence ∧ compliance}}"]
-    D --> D6["6. invalidity: {{invalid scope description}}"]
-    D --> D7["7. introspection: {{self-documentation loop}}"]
-    D --> D8["optional (machine-only). correction: {{history-preserving remedy}}"]
-    D --> D9["optional (machine-only). ordering: {{required ordering enforcement}}"]
+```
+{{NAME}} ({{scope path}})
+
+inherits: {{parent scope path}}
+
+axioms:
+
+1. triad:
+   {{triad requirement}}
+
+2. inheritance:
+   {{parent linkage statement}}
+   inherited axioms are final and cannot be overridden
+
+3. coherence:
+   {{coherence definition}}
+
+4. compliance:
+   {{compliance definition}}
+
+5. governance:
+   {{governance definition}}
+
+6. invalidity:
+   {{invalidity definition}}
+
+7. introspection:
+   {{vocab defines canon and itself}}
+
+8. correction: (machine-only)
+   {{history-preserving remedy}}
+
+9. ordering: (machine-only)
+   {{required ordering enforcement}}
 ```

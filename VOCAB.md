@@ -17,14 +17,14 @@ The property that the triad exists and inheritance is declared for the machine s
 ### correction
 History-preserving change executed by the machine layer to restore governed states.
 
+### final
+The property that inherited axioms cannot be overridden by downstream scopes.
+
 ### governance
 The state where coherence and compliance both hold.
 
 ### inheritance
 The declared linkage from the machine scope to the scope it inherits from.
-
-### final
-The property that inherited axioms cannot be overridden by downstream scopes.
 
 ### introspection
 The requirement that VOCAB defines itself and the CANON it supports.
