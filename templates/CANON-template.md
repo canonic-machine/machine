@@ -1,6 +1,6 @@
 # CANON Template
 
-Use this blueprint for any CANON scope. Replace placeholders with statements specific to the scope you are governing. For the root CANON, set `<NAME>` to the repository name and keep `inherits: /`. Inherited axioms are final. Machine scopes extend the base axioms with correction, ordering, and templates.
+Use this blueprint for any CANON scope. Replace placeholders with statements specific to the scope you are governing. This template is generic; the root CANON is simply one instance with `inherits: /`. Include only the axioms that apply to your scope and add additional axioms as needed.
 
 ```
 {{NAME}} ({{scope path}})
@@ -16,27 +16,12 @@ axioms:
    {{parent linkage statement}}
    inherited axioms are final and cannot be overridden
 
-3. coherence:
-   {{coherence definition}}
+3. introspection:
+   VOCAB defines every term used by this CANON, the SPEC, the README, and itself
 
-4. compliance:
-   {{compliance definition}}
+4. {{axiom name}}:
+   {{axiom statement}}
 
-5. governance:
-   {{governance definition}}
-
-6. invalidity:
-   {{invalidity definition}}
-
-7. introspection:
-   VOCAB defines the terms used by this CANON, the SPEC, and itself
-
-8. correction: (machine-only)
-   {{history-preserving remedy}}
-
-9. ordering: (machine-only)
-   {{required ordering enforcement}}
-
-10. templates: (machine-only)
-   machine hosts and applies canonical templates for CANON, VOCAB, README, and SPEC
+5. {{axiom name}}:
+   {{axiom statement}}
 ```
