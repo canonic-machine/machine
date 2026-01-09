@@ -1,4 +1,4 @@
-# MACHINE Spec
+# MACHINE
 
 1. Purpose
    - Enforce CANONIC and MACHINE axioms through protocols.
@@ -13,6 +13,7 @@
    - Ensure determinism: identical inputs produce identical outcomes.
    - Protocols in `/machine/protocols` are CANONIC and enforce CANONIC axioms, CANONIC SPEC constraints, and machine axioms.
    - Protocols accept input and yield a decision and a signal.
+   - Templates in `/machine/templates` conform to TEMPLATE.
    - Enforce coherence, compliance, governance, and invalidity for machine scopes.
    - Enforce documentation and nomenclature.
    - Enforce minimal canon, ordering, and templating.
@@ -26,7 +27,9 @@
    - Confirm `/machine/protocols` includes CANONIC protocols that enforce CANONIC axioms, CANONIC SPEC constraints, and machine axioms.
    - Confirm protocols accept input and yield a decision and a signal.
    - Confirm triad presence and inheritance declarations.
-   - Confirm VOCAB defines every term used by CANON, SPEC, README, and itself.
+   - Confirm templates in `/machine/templates` conform to TEMPLATE.
+   - Confirm VOCAB is CANON-closed and defines the terms used by CANON and itself.
+   - Confirm README uses terms defined by VOCAB.
    - Validate coherence and compliance; derive governance and invalidity from those results.
    - Validate documentation and nomenclature for canonical artifacts.
    - Validate minimal canon, ordering, and templating requirements.
@@ -34,6 +37,5 @@
 
 5. Consumption notes
    - Downstream scopes inherit this spec and may add constraints without contradicting CANONIC.
-   - When terms are added here, downstream VOCABs must include them.
 
 This SPEC is part of the machine triad and references VOCAB for definitions.
