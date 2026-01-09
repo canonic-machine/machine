@@ -1,26 +1,36 @@
 # MACHINE Spec
 
 1. Purpose
-   - Enforce the minimal CANONIC triad and invariants through the validation layer.
+   - Enforce CANONIC axioms and machine axioms through evaluation.
 
 2. Scope
-   - Applies to `/machine` and informs downstream validation behavior.
+   - Applies to `/machine` and informs inherited scopes.
 
-3. Constraints
-   - Maintain the triad for machine scopes.
-   - Enforce finality of inherited CANONIC axioms.
-   - Perform correction through history-preserving change.
-   - Enforce required ordering (e.g., alphabetical VOCAB terms).
-   - Host and apply CANONIC templates as the blueprint for governance artifacts.
+3. Enforcement
+   - Accept input as a structure and a specification.
+   - Evaluate the structure against the specification.
+   - Produce a binary decision and a non-authoritative signal.
+   - Ensure determinism: identical inputs produce identical outcomes.
+   - Enforce inherited CANONIC axioms: triad, inheritance, introspection.
+   - Enforce coherence, compliance, governance, and invalidity for machine scopes.
+   - Enforce documentation and nomenclature.
+   - Enforce minimal canon, ordering, and templating.
+   - Apply correction through history-preserving change.
 
 4. Validation
+   - Confirm input includes structure and specification.
+   - Confirm evaluation yields a binary decision and signal.
+   - Confirm signal is derived from evaluation and is not authoritative.
+   - Confirm determinism for identical inputs.
    - Confirm triad presence and inheritance declarations.
-   - Verify inherited axioms are not overridden.
-   - Validate ordering requirements where defined.
+   - Confirm VOCAB defines every term used by CANON, SPEC, README, and itself.
+   - Validate coherence and compliance; derive governance and invalidity from those results.
+   - Validate documentation and nomenclature for canonical artifacts.
+   - Validate minimal canon, ordering, and templating requirements.
    - Apply correction without rewriting history.
 
 5. Consumption notes
-   - Downstream layers inherit these constraints without contradicting CANONIC.
-   - When machine terms change, downstream VOCABs must add the new terms.
+   - Downstream scopes inherit this spec and may add constraints without contradicting CANONIC.
+   - When terms are added here, downstream VOCABs must include them.
 
-This SPEC inherits the root triad and references VOCAB for definitions.
+This SPEC is part of the machine triad and references VOCAB for definitions.
