@@ -10,6 +10,7 @@ axioms:
 2. inheritance:
    every machine CANON declares the scope it inherits from
    inheritance terminates at /
+   inherited axioms are final and cannot be overridden
 
 3. coherence:
    a machine scope is coherent iff its CANON statements do not contradict inherited CANON

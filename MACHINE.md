@@ -8,12 +8,14 @@
 
 3. Constraints
    - Maintain the triad for machine scopes.
+   - Enforce finality of inherited CANONIC axioms.
    - Perform correction through history-preserving change.
    - Enforce required ordering (e.g., alphabetical VOCAB terms).
-   - Use CANONIC templates as the blueprint for governance artifacts.
+   - Host and apply CANONIC templates as the blueprint for governance artifacts.
 
 4. Validation
    - Confirm triad presence and inheritance declarations.
+   - Verify inherited axioms are not overridden.
    - Validate ordering requirements where defined.
    - Apply correction without rewriting history.
 

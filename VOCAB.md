@@ -23,6 +23,9 @@ The state where coherence and compliance both hold.
 ### inheritance
 The declared linkage from the machine scope to the scope it inherits from.
 
+### final
+The property that inherited axioms cannot be overridden by downstream scopes.
+
 ### introspection
 The requirement that VOCAB defines itself and the CANON it supports.
 
@@ -37,6 +40,9 @@ The machine function that enforces required ordering (e.g., alphabetical VOCAB t
 
 ### SPEC
 A declarative artifact that defines patterns or constraints for machine enforcement.
+
+### template
+A reusable blueprint for instantiating a governance artifact.
 
 ### triad
 The required set of governance artifacts: CANON.md, VOCAB.md, README.md.
