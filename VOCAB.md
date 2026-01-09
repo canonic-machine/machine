@@ -5,11 +5,14 @@
 ### CANON
 The constraints artifact for the machine scope, inheriting the root CANON.
 
-### compliance
-The property that the triad exists and inheritance is declared for the machine scope.
+### CANONIC
+The root paradigm scope the machine layer inherits from and enforces.
 
 ### coherence
 The property that machine CANON statements do not contradict inherited CANON.
+
+### compliance
+The property that the triad exists and inheritance is declared for the machine scope.
 
 ### correction
 History-preserving change executed by the machine layer to restore governed states.
@@ -31,6 +34,9 @@ The validation engine layer responsible for correction and ordering checks.
 
 ### ordering
 The machine function that enforces required ordering (e.g., alphabetical VOCAB terms).
+
+### SPEC
+A declarative artifact that defines patterns or constraints for machine enforcement.
 
 ### triad
 The required set of governance artifacts: CANON.md, VOCAB.md, README.md.
