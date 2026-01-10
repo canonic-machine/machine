@@ -26,6 +26,9 @@ The area governed by a CANON and its triad.
 ### triad
 The required governance artifacts for a scope: CANON.md, VOCAB.md, README.md.
 
+### TRIAD
+The triad constraint referenced as a label.
+
 ### CANON.md
 The CANON file for a scope.
 

@@ -24,8 +24,8 @@ axioms:
    protocols accept input and yield a decision and a signal
 
 7. nomenclature:
-   upper case is reserved for artifacts that govern like SPEC, CANON, VOCAB, README, PROTOCOLS
-   lower case is reserved for governed artifacts like episodes and templates
+   CANON, TRIAD, and SPEC are uppercase identifiers
+   other artifact labels are lowercase in prose, including vocab, readme, protocols, templates, and episodes
    non-triad artifacts use `SPEC-###_stub` naming
    the prefix is a three-digit numeric prefix
    the `000` prefix is reserved for the SPEC artifact itself
