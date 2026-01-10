@@ -167,9 +167,6 @@ To produce a decision or signal.
 ### series
 A set of related artifacts ordered by a numeric prefix.
 
-### SERIES
-The series name referenced as a label.
-
 ### artifact
 A file or record governed by a scope.
 
@@ -232,9 +229,6 @@ A numeric prefix padded to three digits.
 
 ### numeric
 Composed of digits.
-
-### SPECNAME
-The uppercase series name used by a spec artifact.
 
 ### stub
 The descriptive tail segment of a series name.
