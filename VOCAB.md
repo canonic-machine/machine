@@ -161,4 +161,37 @@ To receive input.
 ### yield
 To produce a decision or signal.
 
+### series
+A set of related artifacts ordered by a numeric prefix.
+
+### artifact
+A file or record governed by a scope.
+
+### nomenclature
+The naming rule applied to a series.
+
+### naming
+A naming pattern applied to a series.
+
+### prefix
+The numeric lead segment of a series name.
+
+### three-digit
+A numeric prefix padded to three digits.
+
+### numeric
+Composed of digits.
+
+### stub
+The descriptive tail segment of a series name.
+
+### lowercase
+Letters in a to z.
+
+### kebab-case
+Lowercase words separated by hyphens.
+
+### ordered
+Arranged by the numeric prefix.
+
 End of VOCAB.

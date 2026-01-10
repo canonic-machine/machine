@@ -22,3 +22,8 @@ axioms:
 6. protocols:
    a machine hosts CANONIC protocols that enforce CANONIC axioms, CANONIC SPEC constraints, and machine axioms
    protocols accept input and yield a decision and a signal
+
+7. nomenclature:
+   series artifacts use `###-stub` naming
+   the prefix is a three-digit numeric prefix
+   the stub is lowercase kebab-case
