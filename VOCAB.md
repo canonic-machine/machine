@@ -170,6 +170,12 @@ A file or record governed by a scope.
 ### non-triad artifact
 An artifact not in the triad.
 
+### upper case
+Letters in A to Z.
+
+### lower case
+Letters in a to z.
+
 ### SPEC
 The spec identifier in a series name.
 
@@ -190,6 +196,21 @@ Created in sequence as artifacts are produced.
 
 ### reserved
 Kept aside for a specific use.
+
+### govern
+To set constraints for a scope.
+
+### governed
+Constrained by a governing scope.
+
+### episodes
+Governed session records in a scope.
+
+### templates
+Governed template artifacts in a scope.
+
+### PROTOCOLS
+The protocols artifact for a scope.
 
 ### nomenclature
 The naming rule applied to a series.
