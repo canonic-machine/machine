@@ -224,9 +224,6 @@ A naming pattern applied to a series.
 ### prefix
 The numeric lead segment of a series name.
 
-### three-digit
-A numeric prefix padded to three digits.
-
 ### numeric
 Composed of digits.
 

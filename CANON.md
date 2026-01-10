@@ -26,7 +26,7 @@ axioms:
 7. nomenclature:
    CANON, TRIAD, and SPEC are uppercase identifiers
    other artifact labels are lowercase in prose, including vocab, readme, protocols, templates, and episodes
-   non-triad artifacts use `SPEC-###_stub` naming
-   the prefix is a three-digit numeric prefix
-   the `000` prefix is reserved for the SPEC artifact itself
-   the stub is lowercase kebab-case
+   non-triad artifacts use `series-###_stub` naming
+   the prefix is a numeric order
+   the `00` prefix is reserved for the SPEC artifact itself, named `series-00-SPEC.md`
+   the spec stub is SPEC; other stubs are lowercase kebab-case
