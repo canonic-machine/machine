@@ -167,6 +167,30 @@ A set of related artifacts ordered by a numeric prefix.
 ### artifact
 A file or record governed by a scope.
 
+### non-triad artifact
+An artifact not in the triad.
+
+### SPEC
+The spec identifier in a series name.
+
+### spec artifact
+The specification artifact for a series.
+
+### order
+The numeric arrangement of a series.
+
+### static
+Fixed and not changing.
+
+### consecutive
+Without gaps in numeric order.
+
+### generative
+Created in sequence as artifacts are produced.
+
+### reserved
+Kept aside for a specific use.
+
 ### nomenclature
 The naming rule applied to a series.
 
