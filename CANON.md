@@ -26,4 +26,5 @@ axioms:
 7. nomenclature:
    series artifacts use `###-stub` naming
    the prefix is a three-digit numeric prefix
+   series artifacts are ordered by the numeric prefix
    the stub is lowercase kebab-case
