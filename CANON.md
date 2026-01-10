@@ -26,7 +26,9 @@ axioms:
 7. nomenclature:
    CANON, TRIAD, and SPEC are uppercase identifiers
    other artifact labels are lowercase in prose, including vocab, readme, protocols, templates, and episodes
-   non-triad artifacts use `series-###_stub` naming
-   the prefix is a numeric order
-   the `00` prefix is reserved for the SPEC artifact itself, named `series-00-SPEC.md`
-   the spec stub is SPEC; other stubs are lowercase kebab-case
+   spec artifacts are named `00-SPECNAME.md` and are the human entry point
+   SPECNAME is uppercase and matches the governed series name
+   governing sub-series use `NN-SERIES.md` with uppercase SERIES names
+   series order is inherited; numbering is positional and may change to preserve the inherited order
+   governed artifacts use a lowercase series abbreviation plus a three-digit order and stub
+   governed pattern: `abNNN-stub.md` (example: `ep000-constitutional-compliance.md`)

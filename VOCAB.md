@@ -167,6 +167,9 @@ To produce a decision or signal.
 ### series
 A set of related artifacts ordered by a numeric prefix.
 
+### SERIES
+The series name referenced as a label.
+
 ### artifact
 A file or record governed by a scope.
 
@@ -224,11 +227,20 @@ A naming pattern applied to a series.
 ### prefix
 The numeric lead segment of a series name.
 
+### three-digit
+A numeric prefix padded to three digits.
+
 ### numeric
 Composed of digits.
 
+### SPECNAME
+The uppercase series name used by a spec artifact.
+
 ### stub
 The descriptive tail segment of a series name.
+
+### abbreviation
+A shortened series name used to prefix governed artifacts.
 
 ### lowercase
 Letters in a to z.
@@ -238,5 +250,8 @@ Lowercase words separated by hyphens.
 
 ### ordered
 Arranged by the numeric prefix.
+
+### positional
+An order determined by placement, not by stable numbering.
 
 End of VOCAB.
