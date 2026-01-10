@@ -13,7 +13,7 @@
    - Ensure determinism: identical inputs produce identical outcomes.
    - Protocols in `/machine/protocols` are CANONIC and enforce CANONIC axioms, CANONIC SPEC constraints, and machine axioms.
    - Protocols accept input and yield a decision and a signal.
-- Templates in `/canonic/templates` conform to TEMPLATE.
+- Templates in `/canonic/templates` conform to TEMPLATE-000_spec.md.
    - Enforce coherence, compliance, governance, and invalidity for machine scopes.
    - Enforce documentation and nomenclature.
    - Enforce minimal canon, ordering, and templating.
@@ -27,7 +27,7 @@
    - Confirm `/machine/protocols` includes CANONIC protocols that enforce CANONIC axioms, CANONIC SPEC constraints, and machine axioms.
    - Confirm protocols accept input and yield a decision and a signal.
    - Confirm triad presence and inheritance declarations.
-- Confirm templates in `/canonic/templates` conform to TEMPLATE.
+- Confirm templates in `/canonic/templates` conform to TEMPLATE-000_spec.md.
    - Confirm VOCAB is CANON-closed and defines the terms used by CANON and itself.
    - Confirm README uses terms defined by VOCAB.
    - Validate coherence and compliance; derive governance and invalidity from those results.
