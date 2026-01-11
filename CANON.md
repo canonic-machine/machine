@@ -5,19 +5,19 @@ inherits: /
 axioms:
 
 1. constitution:
-   a machine enforces the CANONIC constitution only
+   machine enforce CANONIC constitution only
 
 2. input:
-   a machine consumes a structure and a specification
+   machine consume structure and specification
 
 3. evaluation:
-   a machine evaluates the structure against the specification
+   machine evaluate structure against specification
 
 4. decision:
-   a machine produces a binary outcome
+   machine produce binary outcome
 
 5. signal:
-   a machine emits non-authoritative signals describing evaluation
+   machine emit non-authoritative signal for evaluation
 
 6. determinism:
-   identical inputs produce identical outcomes
+   identical input produce identical outcome

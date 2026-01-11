@@ -1,111 +1,27 @@
 # VOCAB (/canonic/machine/)
 
-## Core terms
+## Core concepts
 
 ### CANONIC
 The root scope.
 
-### MACHINE
-The machine scope.
-
 ### machine
 The evaluation layer for a scope.
 
-### CANON
-The axioms for a scope.
-
-### VOCAB
-The terms for a scope; it defines the terms used by CANON and itself.
-
-### README
-The README for a scope.
-
-### scope
-The area governed by a CANON and its triad.
-
-### triad
-The required governance artifacts for a scope: CANON.md, VOCAB.md, README.md.
-
-### TRIAD
-The triad constraint referenced as a label.
-
-### CANON.md
-The CANON file for a scope.
-
-### VOCAB.md
-The VOCAB file for a scope.
-
-### README.md
-The README file for a scope.
-
-### axioms
-The CANON statements for a scope.
-
 ### constitution
-The CANONIC CANON as the minimal constitution.
+The minimal governing axioms for CANONIC.
+
+### enforce
+To apply a constitution.
 
 ### only
 Without exception beyond the stated scope.
 
-### inheritance
-The declared linkage from a scope to the scope it inherits from.
-
-### inherits
-The declared parent scope for a CANON.
-
-### declares
-To state an inheritance linkage in CANON.
-
-### contains
-To hold governance artifacts within a scope.
-
-### terminates
-To end an inheritance chain at /.
-
-### inherited
-Axioms taken from a parent scope.
-
-### final
-The property that inherited axioms cannot be overridden.
-
-### cannot
-A statement of prohibition.
-
-### overridden
-A final axiom that is replaced in a downstream scope.
-
-### introspection
-The requirement that VOCAB defines terms used by CANON and itself.
-
-### defines
-To state meanings in VOCAB.
-
-### term
-A word or phrase used by CANON that must be defined in VOCAB.
-
-### used
-Employed in CANON statements.
-
-### every
-Without exception.
-
-### itself
-The same artifact referring to itself.
-
-### novelty
-The property of being new to a scope.
-
-### novel
-Not inherited from a parent scope.
-
-### duplicate
-To restate an inherited axiom.
-
-### duplicated
-Restated from an inherited axiom.
-
 ### input
 A structure and a specification consumed by a machine.
+
+### consume
+To accept input for evaluation.
 
 ### structure
 The subject evaluated by a machine.
@@ -116,8 +32,14 @@ The criteria a machine evaluates a structure against.
 ### evaluation
 The comparison of a structure to a specification.
 
+### evaluate
+To compare a structure to a specification.
+
 ### decision
 A binary outcome produced by a machine.
+
+### produce
+To output an outcome.
 
 ### binary
 An outcome with two possible values.
@@ -128,142 +50,16 @@ The result of evaluation.
 ### signal
 A non-authoritative output describing evaluation.
 
-### signals
-Non-authoritative outputs describing evaluation.
+### emit
+To output a signal.
 
 ### non-authoritative
 Not determining a decision.
 
 ### determinism
-The property that identical inputs produce identical outcomes.
+The property that identical input produce identical outcome.
 
 ### identical
 The condition that two inputs are the same.
-
-### inputs
-Inputs consumed by a machine.
-
-### outcomes
-Results produced by evaluation.
-
-### protocol
-An enforcement path for axioms and constraints.
-
-### protocols
-Enforcement paths hosted by a machine.
-
-### consumes
-To accept input for evaluation.
-
-### evaluates
-To compare a structure to a specification.
-
-### produces
-To output an outcome.
-
-### emits
-To output a signal.
-
-### describing
-Explaining an evaluation.
-
-### hosts
-To provide protocols.
-
-### enforce
-To apply axioms or constraints.
-
-### constraints
-Rules stated in CANON or SPEC.
-
-### accept
-To receive input.
-
-### yield
-To produce a decision or signal.
-
-### series
-A set of related artifacts ordered by a numeric prefix.
-
-### artifact
-A file or record governed by a scope.
-
-### non-triad artifact
-An artifact not in the triad.
-
-### upper case
-Letters in A to Z.
-
-### lower case
-Letters in a to z.
-
-### SPEC
-The spec identifier in a series name.
-
-### spec artifact
-The specification artifact for a series.
-
-### order
-The numeric arrangement of a series.
-
-### static
-Fixed and not changing.
-
-### consecutive
-Without gaps in numeric order.
-
-### generative
-Created in sequence as artifacts are produced.
-
-### reserved
-Kept aside for a specific use.
-
-### govern
-To set constraints for a scope.
-
-### governed
-Constrained by a governing scope.
-
-### episodes
-Governed session records in a scope.
-
-### templates
-Governed template artifacts in a scope.
-
-### PROTOCOLS
-The protocols artifact for a scope.
-
-### nomenclature
-The naming rule applied to a series.
-
-### naming
-A naming pattern applied to a series.
-
-### prefix
-The numeric lead segment of a series name.
-
-### three-digit
-A numeric prefix padded to three digits.
-
-### numeric
-Composed of digits.
-
-### stub
-The descriptive tail segment of a series name.
-
-### abbreviation
-A shortened series name used to prefix governed artifacts.
-
-### lowercase
-Letters in a to z.
-
-### kebab-case
-Lowercase words separated by hyphens.
-
-### ordered
-Arranged by the numeric prefix.
-
-### positional
-An order determined by placement, not by stable numbering.
 
 End of VOCAB.
