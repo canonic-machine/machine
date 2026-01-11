@@ -1,6 +1,6 @@
 MACHINE (/canonic/machine/)
 
-inherits: /
+inherits: https://github.com/canonic-machine/canonic
 
 axioms:
 
