@@ -6,9 +6,9 @@ triad:
 - README.md
 
 axioms:
+- constitution
 - input
 - evaluation
 - decision
 - signal
 - determinism
-- protocols

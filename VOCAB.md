@@ -1,4 +1,4 @@
-# VOCAB (/machine)
+# VOCAB (/canonic/machine/)
 
 ## Core terms
 
@@ -40,6 +40,12 @@ The README file for a scope.
 
 ### axioms
 The CANON statements for a scope.
+
+### constitution
+The CANONIC CANON as the minimal constitution.
+
+### only
+Without exception beyond the stated scope.
 
 ### inheritance
 The declared linkage from a scope to the scope it inherits from.
@@ -85,6 +91,18 @@ Without exception.
 
 ### itself
 The same artifact referring to itself.
+
+### novelty
+The property of being new to a scope.
+
+### novel
+Not inherited from a parent scope.
+
+### duplicate
+To restate an inherited axiom.
+
+### duplicated
+Restated from an inherited axiom.
 
 ### input
 A structure and a specification consumed by a machine.
