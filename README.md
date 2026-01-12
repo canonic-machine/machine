@@ -1,14 +1,19 @@
 # MACHINE
 
-triad:
-- CANON.md
-- VOCAB.md
-- README.md
+The enforcement layer for CANONIC governance.
 
-axioms:
-- constitution
-- input
-- evaluation
-- decision
-- signal
-- determinism
+---
+
+## Overview
+
+MACHINE evaluates candidate system states against governing CANON and produces binary outcomes (accept/reject).
+
+---
+
+## Triad
+
+- `CANON.md` — governance axioms
+- `VOCAB.md` — content concept definitions
+- `README.md` — this file
+
+---

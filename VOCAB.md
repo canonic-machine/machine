@@ -1,65 +1,95 @@
 # VOCAB (/canonic/machine/)
 
-## Core concepts
+---
 
-### CANONIC
-The root scope.
+## Content Concepts
 
-### machine
-The evaluation layer for a scope.
+### accept
 
-### constitution
-The minimal governing axioms for CANONIC.
+A positive evaluation outcome indicating a candidate state satisfies CANON.
 
-### enforce
-To apply a constitution.
+---
 
-### only
-Without exception beyond the stated scope.
+### agent
 
-### input
-A structure and a specification consumed by a machine.
+An executor that operates under MACHINE governance.
 
-### consume
-To accept input for evaluation.
+---
 
-### structure
-The subject evaluated by a machine.
+### CANON
 
-### specification
-The criteria a machine evaluates a structure against.
+The governance artifact of a scope.
 
-### evaluation
-The comparison of a structure to a specification.
+---
 
-### evaluate
-To compare a structure to a specification.
+### candidate system state
 
-### decision
-A binary outcome produced by a machine.
+An input to MACHINE representing a proposed state for evaluation.
 
-### produce
-To output an outcome.
-
-### binary
-An outcome with two possible values.
-
-### outcome
-The result of evaluation.
-
-### signal
-A non-authoritative output describing evaluation.
-
-### emit
-To output a signal.
-
-### non-authoritative
-Not determining a decision.
+---
 
 ### determinism
-The property that identical input produce identical outcome.
 
-### identical
-The condition that two inputs are the same.
+The property that identical inputs produce identical outcomes.
 
-End of VOCAB.
+---
+
+### evaluation
+
+The process by which MACHINE judges a candidate state against CANON.
+
+---
+
+### governance
+
+The set of axioms that define validity.
+
+---
+
+### input
+
+Data consumed by MACHINE for evaluation.
+
+---
+
+### MACHINE
+
+The enforcement layer that evaluates candidate states against CANON.
+
+---
+
+### outcome
+
+The result of evaluation: accept or reject.
+
+---
+
+### protocol
+
+A procedure defined in a downstream scope.
+
+---
+
+### reject
+
+A negative evaluation outcome indicating a candidate state violates CANON.
+
+---
+
+### scope
+
+A directory governed by a triad.
+
+---
+
+### signal
+
+A non-authoritative emission describing evaluation results.
+
+---
+
+### tooling
+
+Implementation artifacts defined in downstream scopes.
+
+---
