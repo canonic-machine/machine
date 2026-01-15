@@ -18,12 +18,6 @@ An executor that operates under MACHINE governance.
 
 ---
 
-### CANON
-
-The governance artifact of a scope.
-
----
-
 ### candidate system state
 
 An input to MACHINE representing a proposed state for evaluation.
@@ -75,12 +69,6 @@ A procedure defined in a downstream scope.
 ### reject
 
 A negative evaluation outcome indicating a candidate state violates CANON.
-
----
-
-### scope
-
-A directory governed by a triad.
 
 ---
 
