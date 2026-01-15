@@ -1,5 +1,7 @@
 # VOCAB (/canonic/machine/)
 
+inherits: /
+
 ---
 
 ## Content Concepts
