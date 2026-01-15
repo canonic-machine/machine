@@ -52,6 +52,18 @@ Given identical inputs, MACHINE **MUST** produce identical outcomes.
 
 ---
 
+---
+
+## Lifecycle
+
+**Origin:** Extracted from root CANON (ep053) when execution semantics became distinct from constitutional structure.
+
+**Current state:** AI-assisted. Validation logic defined by human; execution increasingly automated through Claude Code and similar agents.
+
+**Automation drift:** Moving toward AI-automated validation with human oversight. Validators will execute deterministically; humans retain governance authority.
+
+---
+
 **This CANON defines validity for the MACHINE scope.**
 **Protocols, agents, and tooling are defined in downstream scopes.**
 
