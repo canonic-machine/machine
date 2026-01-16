@@ -1,91 +1,81 @@
-# MACHINE
+# MACHINE SPEC
+
+**Status:** CANONICAL
+**Closed:** 2026-01-16
+
+---
 
 ## 1. Purpose
 
-Define the MACHINE scope as the enforcement layer of the CANONIC system.
+Define the enforcement semantics of CANONIC governance.
 
-MACHINE exists to enforce governing CANON deterministically. It does not define governance, insight, or execution semantics.
-
----
-
-## 2. Scope
-
-- Applies to `/canonic/machine/`.
-- Inherits all constitutional constraints from `/canonic`.
-- Provides enforcement semantics for downstream scopes.
+MACHINE evaluates candidate states against CANON and produces binary outcomes.
 
 ---
 
-## 3. Principles
+## 2. Governance Path
 
-### 3.1 Governance separation
+```
+/canonic/ (ROOT)
+├── inherits: / (self-terminating)
+│
+└──► /canonic/machine/ (THIS SCOPE)
+     └── inherits: /canonic/
+```
 
-MACHINE enforces governing CANON only.
-
-- Governance is declared exclusively by CANON.
-- MACHINE has no authority to introduce, modify, or interpret governance.
-
----
-
-### 3.2 Enforcement domain
-
-MACHINE operates solely on:
-
-- candidate system states, and
-- governing CANON (including inherited CANON).
-
-MACHINE does not consume SPEC, narrative, or insight artifacts.
+| Field | Value |
+|-------|-------|
+| Path | `/canonic/machine/` |
+| Inherits | `/canonic/` |
+| Closes | CANON.md (6 axioms) |
 
 ---
 
-### 3.3 Deterministic evaluation
+## 3. Normative language
 
-MACHINE evaluates candidate states deterministically against governing CANON.
-
-Given identical inputs, MACHINE produces identical outcomes.
+The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** are to be interpreted as described in RFC 2119.
 
 ---
 
-### 3.4 Binary decision
+## 4. Principles
 
-For each evaluated candidate state, MACHINE produces exactly one outcome:
+### 4.1 Enforcement without governance
 
-- accept, or
-- reject
+MACHINE enforces but does not govern. It accepts inherited CANON as input and produces accept/reject decisions.
 
-There are no intermediate or advisory states.
+### 4.2 Deterministic evaluation
 
----
+Given identical inputs (candidate state + governing CANON), MACHINE produces identical outcomes. Non-determinism is a violation.
 
-### 3.5 Non-authoritative signals
+### 4.3 Signal opacity
 
-MACHINE may emit signals describing evaluation results.
-
-Signals:
-- are non-authoritative,
-- do not constitute governance, and
-- do not cause persistence.
+MACHINE may emit diagnostic signals, but signals have no governance force. Only accept/reject outcomes matter.
 
 ---
 
-## 4. Validation
+## 5. Constraints
 
-A MACHINE scope is valid if and only if:
-
-- the triad (`CANON.md`, `VOCAB.md`, `README.md`) is present,
-- the CANON defines enforcement axioms (authority, input, evaluation, decision, determinism), and
-- MACHINE produces deterministic binary outcomes for identical inputs.
-
----
-
-## 5. Consumption notes
-
-- Downstream scopes may rely on MACHINE enforcement but must not redefine it.
-- Protocols, automation, agent behavior, and tooling are defined outside this SPEC.
+MACHINE does not govern:
+- CANON definition (governed by root)
+- VOCAB semantics (governed by introspection)
+- Execution procedures (governed by OS)
+- Episode production (governed by WRITING)
 
 ---
 
-**This SPEC defines the enforcement semantics of MACHINE.**
-**Validity is defined exclusively by CANON.**
+## 6. Validation
+
+```
+VALIDITY = triad(scope) ∧ inheritance(scope) ∧ introspection(scope)
+```
+
+MACHINE validity requires:
+- CANON.md, VOCAB.md, README.md present
+- Inherits from /canonic/
+- All CANON terms defined in VOCAB
+
+---
+
+**This SPEC closes CANON. Governance is defined exclusively by CANON.**
 
 ---
