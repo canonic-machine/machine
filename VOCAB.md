@@ -48,12 +48,6 @@ Data consumed by MACHINE for evaluation.
 
 ---
 
-### MACHINE
-
-The enforcement layer that evaluates candidate states against CANON.
-
----
-
 ### outcome
 
 The result of evaluation: accept or reject.
