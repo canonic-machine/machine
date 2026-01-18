@@ -64,6 +64,15 @@ Given identical inputs, MACHINE **MUST** produce identical outcomes.
 
 ---
 
+## References
+
+- IDF-001: Constitutional Governance Paradigm (root axioms)
+- IDF-008: Deterministic Black-Box Validation (Axiom 6)
+- IDF-118: Axiomatic Validator Architecture (axiom-to-validator mapping)
+- IDF-140: Constitutional Git as Legal Evidence (enforcement infrastructure)
+
+---
+
 **This CANON defines validity for the MACHINE scope.**
 **Protocols, agents, and tooling are defined in downstream scopes.**
 
